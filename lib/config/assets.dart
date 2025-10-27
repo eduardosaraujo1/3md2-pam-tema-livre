@@ -1,4 +1,6 @@
 abstract class Assets {
+  static const String logo = "assets/brand/logo_light.svg";
+
   static const String destinations = "assets/tourist_api/destinations.json";
   static String destinationImage(int id) {
     const min = 1;

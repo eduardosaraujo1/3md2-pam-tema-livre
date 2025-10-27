@@ -7,7 +7,7 @@ abstract class Environment {
 
   static Future<void> initialize() async {
     if (!_initialized) {
-      await dotenv.load(fileName: ".env");
+      await dotenv.load(fileName: ".env", isOptional: true);
       _initialized = true;
     }
   }
@@ -20,8 +20,8 @@ abstract class Environment {
     }
   }
 
-  static String get SERP_API_KEY {
+  static String get APP_ENVIRONMENT {
     _assertInitialized();
-    return dotenv.env['SERP_API_KEY'] ?? '';
+    return dotenv.env['APP_ENVIRONMENT'] ?? '';
   }
 }

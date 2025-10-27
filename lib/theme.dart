@@ -335,22 +335,25 @@ class MaterialTheme {
     return theme(darkHighContrastScheme());
   }
 
-
   ThemeData theme(ColorScheme colorScheme) => ThemeData(
-     useMaterial3: true,
-     brightness: colorScheme.brightness,
-     colorScheme: colorScheme,
-     textTheme: textTheme.apply(
-       bodyColor: colorScheme.onSurface,
-       displayColor: colorScheme.onSurface,
-     ),
-     scaffoldBackgroundColor: colorScheme.background,
-     canvasColor: colorScheme.surface,
+    useMaterial3: true,
+    brightness: colorScheme.brightness,
+    colorScheme: colorScheme,
+    textTheme: textTheme.apply(
+      bodyColor: colorScheme.onSurface,
+      displayColor: colorScheme.onSurface,
+    ),
+    scaffoldBackgroundColor: colorScheme.surfaceBright,
+    appBarTheme: AppBarTheme(
+      backgroundColor: colorScheme.surfaceContainer,
+      foregroundColor: colorScheme.onSurface,
+      surfaceTintColor: colorScheme.surfaceTint,
+    ),
+    snackBarTheme: SnackBarThemeData(behavior: SnackBarBehavior.floating),
+    canvasColor: colorScheme.surface,
   );
 
-
-  List<ExtendedColor> get extendedColors => [
-  ];
+  List<ExtendedColor> get extendedColors => [];
 }
 
 class ExtendedColor {
@@ -387,3 +390,11 @@ class ColorFamily {
   final Color colorContainer;
   final Color onColorContainer;
 }
+
+final _light = MaterialTheme(const TextTheme()).light();
+
+final _dark = MaterialTheme(const TextTheme()).dark();
+
+ThemeData get light => _light;
+
+ThemeData get dark => _dark;
