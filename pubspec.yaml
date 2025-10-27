@@ -7,9 +7,11 @@ environment:
   sdk: ^3.9.2
 
 dependencies:
+  country_flags: ^4.1.0
   flutter:
     sdk: flutter
   flutter_dotenv: ^6.0.0
+  flutter_svg: ^2.2.1
   get_it: ^8.2.0
 
 dev_dependencies:
@@ -22,3 +24,4 @@ flutter:
   assets:
     - assets/tourist_api/destinations.json
     - assets/tourist_api/images/
+    - assets/brand/logo_light.svg
