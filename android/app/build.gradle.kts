@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.projeto_livre_pam"
+    namespace = "com.etecab.projeto_livre_pam"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
