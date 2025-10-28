@@ -11,6 +11,7 @@ final _getIt = GetIt.I;
 
 final _goRouter = GoRouter(
   redirect: _redirectHandler,
+  refreshListenable: _getIt<AuthModule>().tokenNotifier,
   routes: [
     GoRoute(
       path: Routes.home,

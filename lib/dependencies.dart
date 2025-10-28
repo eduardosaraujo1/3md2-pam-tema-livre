@@ -14,6 +14,8 @@ final _getIt = GetIt.I;
 Future<void> setupDependencies() async {
   await _registerCoreDependencies();
   await _registerAuthDependencies();
+
+  await _getIt.get<SqliteClient>().open();
 }
 
 Future<void> _registerAuthDependencies() async {
@@ -42,6 +44,9 @@ Future<void> _registerCoreDependencies() async {
         await db.execute(script);
       },
     ),
+    dispose: (client) async {
+      await client.close();
+    },
   );
   _getIt.registerSingleton(FlutterSecureStorage());
 }

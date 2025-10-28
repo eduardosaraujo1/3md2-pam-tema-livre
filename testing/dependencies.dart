@@ -11,7 +11,12 @@ Future<void> setupDependencies() async {
   TestWidgetsFlutterBinding.ensureInitialized();
   final dbScript = await sqlite.dbScript;
 
-  _getIt.registerFactory<SqliteClient>(() => sqlite.inMemoryClient(dbScript));
+  _getIt.registerFactoryAsync<SqliteClient>(() async {
+    final client = sqlite.inMemoryClient(dbScript);
+    await client.open();
+
+    return client;
+  });
   _getIt.registerFactory<FlutterSecureStorage>(
     () => FakeFlutterSecureStorage(),
   );

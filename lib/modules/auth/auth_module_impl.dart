@@ -64,9 +64,9 @@ class AuthModuleImpl implements AuthModule {
         return Error(IncorrectLoginCredentialsException());
       }
 
-      return Error(Exception('Failed to login: $error'));
+      return Error(Exception(error));
     } catch (e) {
-      return Error(Exception('Failed to login: $e'));
+      return Error(Exception('Login Module Error - $e'));
     }
   }
 

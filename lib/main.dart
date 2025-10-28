@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
       title: 'Hot Tourist Destinations',
       theme: themes.light,
       darkTheme: themes.dark,
+      themeMode: ThemeMode.light,
       routerConfig: context.router,
     );
   }
