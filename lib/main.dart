@@ -3,6 +3,7 @@ import 'package:logging/logging.dart';
 
 import 'config/environment.dart';
 import 'dependencies.dart' as dependencies;
+import 'routing/router.dart';
 import 'theme.dart' as theme;
 
 void main() async {
@@ -24,10 +25,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: theme.light,
-      home: Scaffold(body: Center(child: Text('Hello World!'))),
-    );
+    return MaterialApp.router(theme: theme.light, routerConfig: context.router);
   }
 }
 

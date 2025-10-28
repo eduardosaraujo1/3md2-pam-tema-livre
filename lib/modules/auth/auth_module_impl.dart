@@ -17,6 +17,11 @@ class AuthModuleImpl implements AuthModule {
   ValueNotifier<String?> get tokenNotifier => tokenStore.tokenNotifier;
 
   @override
+  Future<void> initialize() async {
+    tokenNotifier.value = await tokenStore.getToken();
+  }
+
+  @override
   Future<Result<ProfileDto?, Exception>> getProfile() async {
     try {
       final token = await tokenStore.getToken();

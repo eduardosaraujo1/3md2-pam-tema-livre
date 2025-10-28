@@ -6,10 +6,13 @@ import 'dto/profile/profile_dto.dart';
 abstract class AuthModule {
   /// Current authentication token.
   ///
-  /// Is updated automatically on login, register, and logout.
+  /// Is updated automatically on initialize, login, register, and logout.
   ///
   /// Exposes the current token value and notifies listeners on changes.
   ValueNotifier<String?> get tokenNotifier;
+
+  /// Initializes the authentication module by reading the token stored in [TokenStore].
+  Future<void> initialize();
 
   /// Gets the user profile currently authenticated in the system.
   ///
