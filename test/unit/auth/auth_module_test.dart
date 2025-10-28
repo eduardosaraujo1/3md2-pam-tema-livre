@@ -1,13 +1,11 @@
-import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:projeto_livre_pam/config/assets.dart';
 import 'package:projeto_livre_pam/modules/auth/auth_module.dart';
 import 'package:projeto_livre_pam/modules/auth/auth_module_impl.dart';
 import 'package:projeto_livre_pam/modules/auth/services/local_auth_client.dart';
 import 'package:projeto_livre_pam/modules/auth/services/token_store.dart';
 
 import '../../../testing/fakes/fake_flutter_secure_storage.dart';
-import '../../../testing/fakes/sqlite.dart';
+import '../../../testing/fakes/sqlite.dart' as sqlite;
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -18,14 +16,14 @@ void main() {
   late AuthModule authModule;
 
   setUpAll(() async {
-    createDbScript = await rootBundle.loadString(Assets.createDbScript);
+    createDbScript = await sqlite.dbScript;
   });
 
   setUp(() async {
     // Create a fresh database for each test to avoid state pollution
-    var sqlite = inMemoryClient(createDbScript);
-    await sqlite.open();
-    apiClient = LocalAuthClient(sqliteClient: sqlite);
+    var db = sqlite.inMemoryClient(createDbScript);
+    await db.open();
+    apiClient = LocalAuthClient(sqliteClient: db);
     tokenStore = TokenStore(secureStorage: FakeFlutterSecureStorage());
     authModule = AuthModuleImpl(apiClient: apiClient, tokenStore: tokenStore);
   });

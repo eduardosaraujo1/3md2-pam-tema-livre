@@ -1,350 +1,350 @@
 {
     "data": [
         {
-            "id": "1",
+            "id": 1,
             "name": "Las Vegas Strip",
             "location": "Las Vegas",
             "countryCode": "USA",
             "description": "A atração turística mais visitada do mundo! A Strip de Las Vegas recebe em média mais de 42 milhões de pessoas por ano. Tem a capacidade de se reinventar continuamente e oferecer algo para todos, desde cassinos, luzes deslumbrantes, resorts icônicos, shows de classe mundial, gastronomia decadente, spas, compras e muito mais."
         },
         {
-            "id": "2",
+            "id": 2,
             "name": "Times Square",
             "location": "Nova York",
             "countryCode": "USA",
             "description": "Conhecida por seus outdoors deslumbrantes, luzes de neon e atmosfera agitada, é um destino cativante que nunca deixa de hipnotizar visitantes de todo o mundo. Na verdade, praticamente se tornou um adjetivo para descrever lugares altamente turísticos. A cada ano, a Times Square atrai cerca de 50 milhões de visitantes, tornando-se um dos lugares mais visitados do mundo."
         },
         {
-            "id": "3",
+            "id": 3,
             "name": "Central Park",
             "location": "Nova York",
             "countryCode": "USA",
             "description": "A cada ano, o Central Park atrai cerca de 42 milhões de visitantes, tornando-o um dos parques urbanos mais visitados do mundo. Sua popularidade vem da acessibilidade do parque, eventos e concertos durante todo o ano, bem como seu apelo atemporal como um refúgio tranquilo no meio de uma metrópole agitada. Os visitantes podem passear pelos caminhos arborizados, fazer piquenique no Great Lawn, alugar um pedalinho no lago, visitar o famoso zoológico do Central Park ou explorar as inúmeras esculturas, fontes e jardins espalhados pelo parque."
         },
         {
-            "id": "4",
+            "id": 4,
             "name": "Coliseu",
             "location": "Roma",
             "countryCode": "ITA",
             "description": "O Coliseu em Roma, erguendo-se majestosamente como um símbolo da engenharia e grandeza romana antiga, é uma atração turística icônica que transporta os visitantes de volta no tempo para testemunhar os espetáculos de combate de gladiadores e grandes eventos públicos. A cada ano, milhões de turistas de todo o mundo afluem a esta maravilha arquitetônica, maravilhando-se com seu impressionante anfiteatro e mergulhando na rica história que se desenrola dentro de suas antigas paredes."
         },
         {
-            "id": "5",
+            "id": 5,
             "name": "Cataratas do Niágara",
             "location": "Niágara",
             "countryCode": "USA",
             "description": "As Cataratas do Niágara, localizadas na fronteira entre os Estados Unidos e o Canadá, são uma maravilha natural de tirar o fôlego que cativa os visitantes com suas poderosas cascatas de água e beleza deslumbrante. As cataratas consistem em três seções principais: Horseshoe Falls, American Falls e Bridal Veil Falls, cada uma oferecendo uma perspectiva única e vistas impressionantes. Os visitantes podem fazer passeios de barco, como o icônico Maid of the Mist, para se aproximar das cataratas trovejantes, explorar trilhas cênicas ou desfrutar de vistas panorâmicas dos mirantes."
         },
         {
-            "id": "6",
+            "id": 6,
             "name": "Terminal Grand Central",
             "location": "Nova York",
             "countryCode": "USA",
             "description": "O Grand Central Terminal, localizado em Midtown Manhattan, não é apenas um centro de transporte, mas também uma joia arquitetônica cativante e um marco histórico. Seu estilo Beaux-Arts, relógio icônico, mural celestial no teto e atmosfera movimentada atrai não apenas passageiros, mas também o torna uma das atrações turísticas mais visitadas do mundo. A cada ano, o Grand Central Terminal recebe milhões de visitantes, com estimativas na casa das dezenas de milhões."
         },
         {
-            "id": "7",
+            "id": 7,
             "name": "Faneuil Hall Marketplace",
             "location": "Boston",
             "countryCode": "USA",
             "description": "A cada ano, o Faneuil Hall Marketplace atrai milhões de visitantes, com estimativas na casa das dezenas de milhões. Datando do século XVIII, o Faneuil Hall serviu como local de reunião para colonos americanos que defendiam a independência. Hoje, os visitantes podem explorar o salão histórico, navegar pela diversidade de lojas e restaurantes no Quincy Market e aproveitar apresentações de artistas locais."
         },
         {
-            "id": "8",
+            "id": 8,
             "name": "Magic Kingdom",
             "location": "Orlando",
             "countryCode": "USA",
             "description": "O Walt Disney World Resort em Orlando, Flórida, é um destino mágico e expansivo que oferece entretenimento incomparável, experiências encantadoras e personagens Disney amados. O que diferencia o Disney World em Orlando é seu tamanho e escopo. É o maior resort Disney do mundo, cobrindo uma área de mais de 25.000 acres."
         },
         {
-            "id": "9",
+            "id": 9,
             "name": "Disneyland Park",
             "location": "Anaheim",
             "countryCode": "USA",
             "description": "A Disneyland original em Anaheim vem encantando visitantes desde 1955. Sua popularidade vem de seu status como o parque temático Disney original, onde o próprio Walt Disney deu vida à sua imaginação. Essa importância histórica, juntamente com as atrações icônicas do parque como o Castelo da Bela Adormecida e Piratas do Caribe, torna-o uma peregrinação para fãs da Disney em todo o mundo."
         },
         {
-            "id": "10",
+            "id": 10,
             "name": "Cidade Proibida",
             "location": "Pequim",
             "countryCode": "CHN",
             "description": "A Cidade Proibida, localizada no coração de Pequim, é um magnífico complexo de palácios imperiais que serviu como residência dos imperadores chineses por mais de 500 anos. Seu status de Patrimônio Mundial da UNESCO, importância cultural e a oportunidade de testemunhar em primeira mão a grandeza da civilização chinesa antiga tornam a Cidade Proibida uma parada essencial para entusiastas da história e viajantes que buscam um vislumbre do esplendor imperial da China. A cada ano, milhões de visitantes desfrutam de seus pátios extensos, palácios ornamentados e detalhes arquitetônicos intrincados."
         },
         {
-            "id": "11",
+            "id": 11,
             "name": "Grande Bazar",
             "location": "Istambul",
             "countryCode": "TUR",
             "description": "O Grand Bazaar em Istambul, com seus becos labirínticos e atmosfera vibrante, é uma atração turística cativante que imerge os visitantes em um mundo de rica história, artesanato tradicional e comércio movimentado. A cada ano, milhões de pessoas de todo o mundo afluem a este mercado icônico, ansiosas para explorar suas incontáveis lojas e experimentar a vibrante tapeçaria de imagens, sons e aromas."
         },
         {
-            "id": "12",
+            "id": 12,
             "name": "Disneyland Tokyo",
             "location": "Tóquio",
             "countryCode": "JPN",
             "description": "A cada ano, a Disneyland Tokyo atrai milhões de visitantes, tornando-se um dos destinos turísticos mais populares e visitados do Japão. Sua combinação de personagens Disney amados, terras temáticas imersivas, desfiles espetaculares e entretenimento de classe mundial garante uma experiência mágica para visitantes de todo o mundo. Possui todas as características icônicas das Disneylands ao redor do mundo, mas apresenta uma integração perfeita da narrativa da Disney com a cultura e tradições japonesas."
         },
         {
-            "id": "13",
+            "id": 13,
             "name": "Catedral de Notre-Dame",
             "location": "Paris",
             "countryCode": "FRA",
             "description": "A Catedral de Notre Dame, uma obra-prima da arquitetura gótica, atrai milhões de visitantes a cada ano. Ao entrar em Notre Dame, os visitantes são recebidos por um interior de tirar o fôlego adornado com tetos abobadados altíssimos, vitrais deslumbrantes e detalhes ornamentados. O trágico incêndio de abril de 2019 deixou a Catedral de Notre Dame necessitando de restauração, tornando-a um símbolo contínuo de resiliência e esperança. Embora a estrutura esteja atualmente fechada ao público, os visitantes ainda podem apreciar a beleza exterior da catedral e testemunhar os esforços de restauração."
         },
         {
-            "id": "14",
+            "id": 14,
             "name": "Parque Golden Gate",
             "location": "São Francisco",
             "countryCode": "USA",
             "description": "Outra das atrações turísticas mais populares de São Francisco, bem como uma das atrações turísticas mais populares do mundo, é o Golden Gate Park. As pessoas tendem a vir pela vista da sempre famosa Ponte Golden Gate, mas ficam encantadas em aproveitar o próprio parque, que é uma coisa linda. Paisagismo exuberante, pequenos lagos e trilhas para caminhada tornam o local perfeito para passear, parar e fazer piquenique na cidade à beira da baía."
         },
         {
-            "id": "15",
+            "id": 15,
             "name": "DisneySea",
             "location": "Tóquio",
             "countryCode": "JPN",
             "description": "DisneySea em Tóquio é um parque temático Disney único que transporta os visitantes para um mundo de imaginação, aventura e maravilhas marítimas. Com seu design inspirado no náutico, arquitetura deslumbrante e narrativa imersiva, a DisneySea oferece uma experiência única e encantadora que a diferencia de outros destinos Disney. A cada ano, a DisneySea recebe milhões de visitantes, tornando-se um dos lugares mais populares do mundo e do Japão."
         },
         {
-            "id": "16",
+            "id": 16,
             "name": "Disneyland Paris",
             "location": "França",
             "countryCode": "FRA",
             "description": "A Disneyland Paris oferece um pacote completo de entretenimento, tornando-se um destino de sonho para fãs da Disney e famílias em busca de uma aventura mágica. Abrangendo dois parques temáticos, Disneyland Park e Walt Disney Studios Park, a Disneyland Paris oferece uma ampla variedade de opções de entretenimento. De atrações clássicas como It's a Small World e Space Mountain a shows ao vivo, desfiles e encontros com personagens, há algo para todos os seus 15 milhões de visitantes anuais aproveitarem."
         },
         {
-            "id": "17",
+            "id": 17,
             "name": "Epcot",
             "location": "Flórida",
             "countryCode": "USA",
             "description": "Epcot, localizado no Walt Disney World Resort na Flórida, é um parque temático único e cativante que celebra a conquista humana, diversidade cultural e inovação tecnológica. Dividido em duas seções distintas, Future World e World Showcase, o Epcot oferece uma mistura de atrações emocionantes, experiências educacionais e mostras culturais imersivas de todo o mundo. Como um dos lugares mais populares do mundo, atrai dezenas de milhões de visitantes a cada ano."
         },
         {
-            "id": "18",
+            "id": 18,
             "name": "Basílica de Sacré-Cœur",
             "location": "Paris",
             "countryCode": "FRA",
             "description": "A Sacré-Cœur, empoleirada no topo da pitoresca colina de Montmartre, é uma magnífica basílica que encanta os visitantes com sua impressionante fachada branca. O interior da basílica encanta os visitantes com sua grandiosidade e oferece um momento de tranquilidade e reflexão em meio à cidade agitada. Ao redor da Sacré-Cœur, o bairro artístico de Montmartre acena com suas ruas charmosas, ambiente boêmio e cultura de café vibrante."
         },
         {
-            "id": "19",
+            "id": 19,
             "name": "Tsim Sha Tsui Waterfront",
             "location": "Hong Kong",
             "countryCode": "HKG",
             "description": "O Tsim Sha Tsui Waterfront, situado ao longo da ponta sul da Península de Kowloon, é um calçadão à beira-mar com vistas deslumbrantes de Hong Kong. A cada ano, o Tsim Sha Tsui Waterfront recebe milhões de visitantes, tornando-se um dos pontos turísticos mais frequentados de Hong Kong. Seja apreciando a Symphony of Lights, um espetacular show multimídia de luz e som, jantando em restaurantes à beira-mar ou simplesmente admirando o horizonte cintilante, o Tsim Sha Tsui Waterfront é uma das experiências mais memoráveis de Hong Kong."
         },
         {
-            "id": "20",
+            "id": 20,
             "name": "Pike Place Market",
             "location": "Seattle",
             "countryCode": "USA",
             "description": "O Pike Place Market, situado no coração do centro de Seattle, Washington, é um mercado mundialmente famoso que vem cativando moradores locais e turistas desde 1907. Os visitantes são atraídos por suas barracas animadas e coloridas, onde podem navegar por frutos do mar frescos, alimentos artesanais, flores e uma infinidade de artesanato local e lembranças. Pike Place é uma parada essencial para quem visita Seattle."
         },
         {
-            "id": "21",
+            "id": 21,
             "name": "Zócalo",
             "location": "Cidade do México",
             "countryCode": "MEX",
             "description": "O Zócalo, também conhecido como Plaza de la Constitución, é a praça principal e coração histórico da Cidade do México, repleto de rica importância cultural, histórica e política. Cercado por marcos impressionantes como a Catedral Metropolitana, Palácio Nacional e Templo Mayor, o Zócalo é uma parada principal para turistas na Cidade do México. A cada ano, o Zócalo atrai um número significativo de visitantes, com estimativas na casa dos milhões."
         },
         {
-            "id": "22",
+            "id": 22,
             "name": "Disney's Animal Kingdom",
             "location": "Flórida",
             "countryCode": "USA",
             "description": "O Disney's Animal Kingdom, também localizado no complexo Disney, combina a magia da Disney com as maravilhas do reino animal. O que diferencia o Disney's Animal Kingdom é sua dedicação à preservação da vida selvagem e consciência ambiental. O parque serve tanto como parque temático quanto como instituição zoológica, proporcionando aos visitantes a oportunidade de aprender e apreciar várias espécies animais. Apresenta experiências imersivas como o Kilimanjaro Safaris, onde os visitantes embarcam em uma autêntica aventura de safári africano através de uma vasta savana. O parque atrai dezenas de milhões de visitantes a cada ano, tornando-se um dos lugares mais populares do mundo."
         },
         {
-            "id": "23",
+            "id": 23,
             "name": "Disney's Hollywood Studios",
             "location": "Flórida",
             "countryCode": "USA",
             "description": "O Disney's Hollywood Studios, localizado dentro do Walt Disney World Resort em Orlando, oferece aos visitantes a oportunidade de entrar no mundo de Hollywood e experimentar o glamour, brilho e emoção da indústria do entretenimento. O que diferencia o Disney's Hollywood Studios é seu foco único na magia do cinema e narrativa imersiva. Da icônica Twilight Zone Tower of Terror à repleta de ação Star Wars: Galaxy's Edge, o parque leva os visitantes em aventuras inesquecíveis inspiradas em filmes e franquias amados."
         },
         {
-            "id": "24",
+            "id": 24,
             "name": "Universal Studios Japan",
             "location": "Osaka",
             "countryCode": "JPN",
             "description": "O Universal Studios Japan em Osaka é um parque temático de renome mundial que dá vida à magia dos filmes. Com suas atrações imersivas, passeios emocionantes e personagens amados tanto da Universal Pictures quanto da cultura pop japonesa, o Universal Studios Osaka oferece uma mistura única de entretenimento hollywoodiano e charme japonês. O que diferencia o Universal Studios Osaka são suas atrações e experiências exclusivas adaptadas ao público japonês."
         },
         {
-            "id": "25",
+            "id": 25,
             "name": "Parque Nacional Great Smoky Mountains",
             "location": "Tennessee",
             "countryCode": "USA",
             "description": "As Great Smoky Mountains são encontradas ao longo da fronteira entre Tennessee e Carolina do Norte. Sua misteriosa névoa azul dá ao conjunto seu nome. Este parque nacional de tirar o fôlego é conhecido por suas paisagens deslumbrantes, vida selvagem diversificada e história cultural. Seus picos majestosos, cachoeiras em cascata e abundantes trilhas para caminhada atraem milhões de visitantes a cada ano que vêm explorar as maravilhas das Montanhas Apalaches."
         },
         {
-            "id": "26",
+            "id": 26,
             "name": "Navy Pier",
             "location": "Chicago",
             "countryCode": "USA",
             "description": "Navy Pier, situado na costa cênica do Lago Michigan em Chicago, é um destino vibrante e icônico que oferece uma ampla variedade de experiências de entretenimento, gastronomia e cultura. Com suas vistas deslumbrantes, passeios de diversão, apresentações ao vivo e diversas atrações, Navy Pier é um lugar favorito dos moradores locais e uma parada popular para turistas, milhões dos quais vêm a cada ano para aproveitar o charme à beira-mar de Chicago no seu melhor."
         },
         {
-            "id": "27",
+            "id": 27,
             "name": "Museu do Louvre",
             "location": "Paris",
             "countryCode": "FRA",
             "description": "O Museu do Louvre, localizado no coração de Paris, é uma das instituições culturais mais renomadas do mundo. Abrigando uma extensa coleção que abrange milhares de anos, incluindo obras-primas icônicas como a Mona Lisa e a Vênus de Milo, o Louvre oferece uma jornada incomparável através da arte e história. Além de suas obras de arte icônicas, a própria localização no antigo palácio real no coração da cidade também é uma grande atração, atraindo até 10 milhões de visitantes por ano."
         },
         {
-            "id": "28",
+            "id": 28,
             "name": "A Grande Muralha da China",
             "location": "China",
             "countryCode": "CHN",
             "description": "A Grande Muralha da China, um Patrimônio Mundial da UNESCO, é uma maravilha inspiradora da engenharia humana e um dos marcos mais icônicos do mundo. Estendendo-se por milhares de quilômetros através de terreno acidentado, é um testemunho da importância histórica e patrimônio cultural da China. A cada ano, a Grande Muralha da China atrai milhões de visitantes de todo o mundo, tornando-se uma das atrações turísticas mais visitadas do mundo."
         },
         {
-            "id": "29",
+            "id": 29,
             "name": "South Street Seaport",
             "location": "Nova York",
             "countryCode": "USA",
             "description": "O South Street Seaport, situado ao longo do East River no Lower Manhattan, oferece acima de tudo vistas deslumbrantes à beira-mar. A cada ano, o South Street Seaport atrai um número significativo de visitantes, com estimativas na casa dos milhões. Sua localização privilegiada, a poucos passos de atrações populares como a Ponte do Brooklyn e o Distrito Financeiro, combinada com sua mistura eclética de gastronomia, compras e ofertas culturais, contribuem para seu apelo como um destino turístico próspero."
         },
         {
-            "id": "30",
+            "id": 30,
             "name": "Píer 39",
             "location": "São Francisco",
             "countryCode": "USA",
             "description": "O Pier 39, localizado ao longo da icônica orla de São Francisco, é um dos principais destinos turísticos da cidade. Sua colônia residente de leões-marinhos é uma grande atração. Os turistas podem observar e ouvir os leões-marinhos brincalhões enquanto descansam em docas flutuantes perto do píer. Este espetáculo natural, combinado com a energia vibrante do píer, cria uma experiência inesquecível e contribui para o apelo generalizado do Pier 39."
         },
         {
-            "id": "31",
+            "id": 31,
             "name": "Ópera de Sydney",
             "location": "Sydney",
             "countryCode": "AUS",
             "description": "Parece que o hemisfério sul não está recebendo a atenção que merece quando se trata de turismo, porque apenas uma das 50 atrações turísticas mais visitadas do mundo pode ser encontrada aqui – a linda Sydney Opera House. Embora esteja um pouco solitária nesta parte da nossa lista, a Sydney Opera House e a própria cidade definitivamente valem a jornada para baixo. Com seu icônico telhado em forma de vela, ela abrilhanta o Porto de Sydney. Serve como um vibrante centro cultural, hospedando apresentações e eventos de classe mundial que atraem cerca de 10 milhões de visitantes todos os anos."
         },
         {
-            "id": "32",
+            "id": 32,
             "name": "Museu Nacional de História Natural (Smithsonian)",
             "location": "Washington, D.C.",
             "countryCode": "USA",
             "description": "O Museu Nacional de História Natural recebe vários milhões de visitantes a cada ano para uma fascinante jornada através das maravilhas do mundo natural. Do icônico Diamante Hope aos fósseis de dinossauros no Hall of Paleobiology, os visitantes podem mergulhar nos reinos da geologia, antropologia, biologia e muito mais, imergindo nos mistérios e maravilhas da história natural do nosso planeta."
         },
         {
-            "id": "33",
+            "id": 33,
             "name": "Islands of Adventure",
             "location": "Universal Orlando",
             "countryCode": "USA",
             "description": "Islands of Adventure, localizado dentro do Universal Orlando Resort na Flórida, leva os visitantes em aventuras emocionantes através de várias ilhas temáticas. A cada ano, Islands of Adventure atrai milhões de visitantes, com estimativas na casa das dezenas de milhões. Sua popularidade vem de seus passeios emocionantes, ambientes imersivos e a oportunidade de entrar nos mundos de franquias icônicas."
         },
         {
-            "id": "34",
+            "id": 34,
             "name": "Disneyland California Adventure",
             "location": "Anaheim",
             "countryCode": "USA",
             "description": "Disney California Adventure é um parque temático vibrante e imersivo que captura o espírito da Califórnia através da magia da narrativa Disney. De marcos icônicos a atrações emocionantes como Guardians of the Galaxy – Mission: BREAKOUT!, o parque oferece uma mistura única de aventura, nostalgia e criatividade. Os visitantes podem explorar terras temáticas, experimentar passeios emocionantes e desfrutar de deliciosa culinária inspirada na rica e diversificada cultura alimentar da Califórnia."
         },
         {
-            "id": "35",
+            "id": 35,
             "name": "Ocean Park",
             "location": "Hong Kong",
             "countryCode": "HKG",
             "description": "Ocean Park, localizado no lado sul da Ilha de Hong Kong, é um renomado parque temático marinho. A combinação distinta do parque de elementos de parque de diversões e esforços de conservação diferencia o Ocean Park. Além dos passeios emocionantes e entretenimento, o Ocean Park está comprometido com a conservação marinha e educação, oferecendo aos visitantes a oportunidade de aprender sobre ecossistemas marinhos, espécies ameaçadas e sustentabilidade ambiental. Atrai vários milhões de visitantes a cada ano de todo o mundo."
         },
         {
-            "id": "36",
+            "id": 36,
             "name": "Victoria Peak",
             "location": "Hong Kong",
             "countryCode": "HKG",
             "description": "Victoria Peak, também conhecida como 'The Peak', é um destino imperdível em Hong Kong, oferecendo vistas panorâmicas de tirar o fôlego do icônico horizonte da cidade, do Porto de Victoria e das montanhas circundantes. O Peak Tram, uma ferrovia funicular histórica, leva os visitantes em uma jornada cênica até o cume, onde podem desfrutar de vistas deslumbrantes, jantar em restaurantes renomados e explorar o mirante da Peak Tower e atrações. Victoria Peak atrai milhões de visitantes a cada ano, tornando-se uma das atrações turísticas mais populares do mundo e a mais popular em Hong Kong."
         },
         {
-            "id": "37",
+            "id": 37,
             "name": "Museu Nacional do Ar e Espaço (Smithsonian)",
             "location": "Washington, D.C.",
             "countryCode": "USA",
             "description": "A cada ano, o Museu Nacional do Ar e Espaço atrai milhões de visitantes. Sua localização central no National Mall, perto de outros museus e marcos renomados, o torna um destino popular para turistas e entusiastas da aviação de todo o mundo. Com sua extensa coleção de aeronaves históricas, naves espaciais e exposições interativas, o museu oferece aos visitantes uma experiência imersiva que celebra as conquistas notáveis da humanidade nos céus e além."
         },
         {
-            "id": "38",
+            "id": 38,
             "name": "Torre Eiffel",
             "location": "Paris",
             "countryCode": "FRA",
             "description": "A Torre Eiffel é um símbolo icônico de Paris e um dos marcos mais reconhecíveis do mundo. Atrai aproximadamente 7 milhões de visitantes a cada ano. Sua presença imponente e intrincado trabalho em ferro oferecem vistas panorâmicas de tirar o fôlego da cidade. Subindo mais de 300 metros acima do horizonte parisiense, a Torre Eiffel oferece vários níveis para exploração e observação, bem como uma variedade de restaurantes."
         },
         {
-            "id": "39",
+            "id": 39,
             "name": "Everland",
             "location": "Gyeonggi-do, Coreia do Sul",
             "countryCode": "KOR",
             "description": "Everland, localizado em Yongin, Coreia do Sul, é o maior parque temático do país e um destino popular para moradores e turistas. O parque é dividido em várias zonas temáticas, incluindo Global Fair, American Adventure, European Adventure e muito mais, cada uma oferecendo uma atmosfera e experiências únicas. De montanhas-russas de tirar o fôlego e passeios aquáticos a adoráveis exposições de animais e desfiles encantadores, Everland oferece entretenimento e emoção sem fim."
         },
         {
-            "id": "40",
+            "id": 40,
             "name": "Museu Britânico",
             "location": "Londres",
             "countryCode": "GBR",
             "description": "O British Museum, localizado no coração de Londres, é uma instituição de renome mundial que abriga uma extensa e diversificada coleção de arte e artefatos de civilizações de todo o globo. Das múmias egípcias antigas à Pedra de Roseta e aos Mármores de Elgin, o museu oferece uma jornada cativante através da história e cultura humanas que atrai aproximadamente 6 milhões de visitantes a cada ano."
         },
         {
-            "id": "41",
+            "id": 41,
             "name": "Disneyland",
             "location": "Hong Kong",
             "countryCode": "HKG",
             "description": "A Disneyland Hong Kong é um destino mágico e encantador que oferece a experiência clássica da Disney com um toque de cultura e estilo chinês. De personagens Disney amados e atrações icônicas a adaptações culturais especiais e ofertas de entretenimento únicas, a Disneyland Hong Kong mistura perfeitamente a magia da Disney com o espírito vibrante da Ásia, atraindo pelo menos 7 milhões de visitantes a cada ano."
         },
         {
-            "id": "42",
+            "id": 42,
             "name": "Lotte World",
             "location": "Seul",
             "countryCode": "KOR",
             "description": "Lotte World, localizado em Seul, Coreia do Sul, é um extenso parque temático que oferece uma mistura única de passeios emocionantes, entretenimento e experiências de compras. Com uma seção interna e externa, os visitantes podem desfrutar de uma variedade de atrações, incluindo montanhas-russas, passeios aquáticos, apresentações ao vivo e uma variedade de zonas temáticas para atender a diferentes interesses e faixas etárias."
         },
         {
-            "id": "43",
+            "id": 43,
             "name": "Lago Mead",
             "location": "Boulder City",
             "countryCode": "USA",
             "description": "Lake Mead, localizado na fronteira entre Nevada e Arizona, é um reservatório deslumbrante e expansivo com águas cristalinas cercadas por paisagens de tirar o fôlego. Sua popularidade vem de seu vasto tamanho, oferecendo amplo espaço para passeios de barco, pesca, natação, caminhadas e camping. Os visitantes podem explorar as inúmeras enseadas, penhascos e praias, ou embarcar em passeios cênicos sobre ou ao redor do lago."
         },
         {
-            "id": "44",
+            "id": 44,
             "name": "Universal Studios",
             "location": "Orlando",
             "countryCode": "USA",
             "description": "Universal Studios, Orlando transporta os visitantes para os reinos mágicos de seus filmes e programas de TV favoritos. Este complexo expansivo oferece aos visitantes uma gama diversificada de opções de entretenimento, desde experimentar o mundo mágico de Harry Potter a embarcar em aventuras emocionantes com personagens amados como Homem-Aranha e dinossauros do Jurassic Park."
         },
         {
-            "id": "45",
+            "id": 45,
             "name": "Memorial Lincoln",
             "location": "Washington, D.C.",
             "countryCode": "USA",
             "description": "O Lincoln Memorial é uma poderosa e icônica homenagem ao 16º Presidente dos Estados Unidos, Abraham Lincoln. Sua arquitetura majestosa, incluindo a famosa estátua de Lincoln sentado em contemplação, atrai visitantes de todo o mundo. A cada ano, milhões de turistas param aqui. Os visitantes podem subir os degraus e ficar na presença da estátua de Lincoln, cercados por inscrições de seus famosos discursos, como o Discurso de Gettysburg."
         },
         {
-            "id": "46",
+            "id": 46,
             "name": "Museu Metropolitano de Arte",
             "location": "Nova York",
             "countryCode": "USA",
             "description": "O Metropolitan Museum of Art, localizado na cidade de Nova York, é um dos principais museus de arte do mundo, exibindo uma vasta coleção que abrange mais de 5.000 anos de história humana. Situado no Central Park, a grande arquitetura e deslumbrantes galerias do Met fornecem um cenário magnífico para entusiastas de arte, aficionados por história e visitantes curiosos se imergirem em obras-primas artísticas. A cada ano, o Metropolitan Museum of Art recebe milhões de visitantes de todo o mundo, tornando-se um dos lugares mais visitados do mundo."
         },
         {
-            "id": "47",
+            "id": 47,
             "name": "Bourbon Street",
             "location": "Nova Orleans",
             "countryCode": "USA",
             "description": "Bourbon Street, localizada no coração do French Quarter em Nova Orleans, Louisiana, atrai turistas de todo o mundo que vêm desfrutar de seu entretenimento, vida noturna, música, comida e bebidas. Sua popularidade atinge o pico durante eventos como o Mardi Gras, onde a rua se torna o epicentro de desfiles vibrantes e foliões fantasiados."
         },
         {
-            "id": "48",
+            "id": 48,
             "name": "Universal Studios",
             "location": "Hollywood",
             "countryCode": "USA",
             "description": "O Universal Studios original em Hollywood atrai milhões de turistas a cada ano. Único nesta localização do Universal é o famoso Studio Tour, que leva os visitantes em um passeio de bonde guiado através dos bastidores de trabalho do Universal Studios. Isso proporciona um vislumbre exclusivo dos verdadeiros cenários de produção, estúdios de som e marcos icônicos da indústria cinematográfica."
         },
         {
-            "id": "49",
+            "id": 49,
             "name": "Palácio de Versalhes",
             "location": "França",
             "countryCode": "FRA",
             "description": "O Palácio de Versalhes é um testemunho da grandeza da monarquia francesa. Aproximadamente 7 a 8 milhões de visitantes a cada ano desfrutam dos jardins extensos, interiores intricadamente projetados e icônico Salão dos Espelhos deste Patrimônio Mundial da UNESCO. É verdadeiramente uma maneira de voltar no tempo e se imergir no estilo de vida luxuoso da realeza francesa."
         },
         {
-            "id": "50",
+            "id": 50,
             "name": "Nagashima Spa Land",
             "location": "Kuwana, Japão",
             "countryCode": "JPN",
