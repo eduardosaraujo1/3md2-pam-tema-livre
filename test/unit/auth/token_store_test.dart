@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:projeto_livre_pam/modules/auth/services/token_store.dart';
+import 'package:hot_tourist_destinations/modules/auth/services/token_store.dart';
 
 import '../../../testing/fakes/fake_flutter_secure_storage.dart';
 

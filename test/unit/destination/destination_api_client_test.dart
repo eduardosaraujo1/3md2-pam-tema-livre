@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:projeto_livre_pam/modules/destinations/dto/destination_dto.dart';
-import 'package:projeto_livre_pam/modules/destinations/services/destination_api_client.dart';
+import 'package:hot_tourist_destinations/modules/destinations/dto/destination_dto.dart';
+import 'package:hot_tourist_destinations/modules/destinations/services/destination_api_client.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();

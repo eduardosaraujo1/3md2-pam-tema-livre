@@ -1,12 +1,12 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
-import 'package:projeto_livre_pam/modules/auth/auth_module.dart';
-import 'package:projeto_livre_pam/modules/auth/auth_module_impl.dart';
-import 'package:projeto_livre_pam/modules/auth/services/local_auth_client.dart';
-import 'package:projeto_livre_pam/modules/auth/services/token_store.dart';
-import 'package:projeto_livre_pam/ui/auth/view_models/login_view_model.dart';
+import 'package:hot_tourist_destinations/modules/auth/auth_module.dart';
+import 'package:hot_tourist_destinations/modules/auth/auth_module_impl.dart';
+import 'package:hot_tourist_destinations/modules/auth/services/local_auth_client.dart';
+import 'package:hot_tourist_destinations/modules/auth/services/token_store.dart';
+import 'package:hot_tourist_destinations/ui/auth/view_models/login_view_model.dart';
 
-import '../dependencies.dart' as dependencies;
+import '../../../testing/dependencies.dart' as dependencies;
 
 final _getIt = GetIt.I;
 

@@ -1,64 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
 
 import 'config/environment.dart';
-import 'dependencies.dart' as dependencies;
+import 'dependencies.dart';
 import 'routing/router.dart';
-import 'theme.dart' as theme;
+import 'theme.dart' as themes;
 
 void main() async {
-  try {
-    Logger.root.level = Level.ALL;
+  await Environment.initialize();
 
-    await Environment.initialize();
+  await setupDependencies();
 
-    await dependencies.initialize();
-
-    runApp(const MainApp());
-  } catch (e, s) {
-    runApp(ErrorApp(e, s));
-  }
+  runApp(const MyApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(theme: theme.light, routerConfig: context.router);
-  }
-}
-
-class ErrorApp extends StatelessWidget {
-  const ErrorApp(this.error, this.stacktrace, {super.key});
-
-  final Object error;
-
-  final StackTrace stacktrace;
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: DecoratedBox(
-          decoration: const BoxDecoration(
-            color: Color.fromARGB(255, 255, 217, 214),
-          ),
-          child: Column(
-            children: [
-              Text(
-                'An error occurred during initialization:\n\n$error',
-                style: const TextStyle(color: Colors.black),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                stacktrace.toString(),
-                style: const TextStyle(color: Colors.black),
-              ),
-            ],
-          ),
-        ),
-      ),
+    return MaterialApp.router(
+      title: 'Hot Tourist Destinations',
+      theme: themes.light,
+      darkTheme: themes.dark,
+      routerConfig: context.router,
     );
   }
 }

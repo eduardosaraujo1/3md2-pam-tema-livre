@@ -1,9 +1,9 @@
 import 'package:bcrypt/bcrypt.dart';
 import 'package:multiple_result/multiple_result.dart';
-import 'package:projeto_livre_pam/core/sqlite/sqlite_client.dart';
-import 'package:projeto_livre_pam/modules/auth/services/models/error_dictionary.dart';
 
+import '../../../core/sqlite/sqlite_client.dart';
 import '../dto/profile/profile_dto.dart';
+import 'models/error_dictionary.dart';
 import 'models/login_result.dart';
 
 class LocalAuthClient {

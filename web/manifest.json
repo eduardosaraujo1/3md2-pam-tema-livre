@@ -1,6 +1,6 @@
 {
-    "name": "projeto_livre_pam",
-    "short_name": "projeto_livre_pam",
+    "name": "hot_tourist_destinations",
+    "short_name": "hot_tourist_destinations",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -1,17 +1,17 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
-import 'package:projeto_livre_pam/modules/auth/auth_module.dart';
-import 'package:projeto_livre_pam/modules/auth/services/local_auth_client.dart';
 
 import 'config/assets.dart';
 import 'core/sqlite/sqlite_client.dart';
+import 'modules/auth/auth_module.dart';
 import 'modules/auth/auth_module_impl.dart';
+import 'modules/auth/services/local_auth_client.dart';
 import 'modules/auth/services/token_store.dart';
 
 final _getIt = GetIt.I;
 
-Future<void> initialize() async {
+Future<void> setupDependencies() async {
   await _registerCoreDependencies();
   await _registerAuthDependencies();
 }

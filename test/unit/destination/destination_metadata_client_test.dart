@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:projeto_livre_pam/modules/destinations/services/destination_metadata_client.dart';
+import 'package:hot_tourist_destinations/modules/destinations/services/destination_metadata_client.dart';
 
 import '../../../testing/fakes/sqlite.dart' as sqlite;
 

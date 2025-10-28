@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:projeto_livre_pam/config/assets.dart';
-import 'package:projeto_livre_pam/core/sqlite/sqlite_client.dart';
+import 'package:hot_tourist_destinations/config/assets.dart';
+import 'package:hot_tourist_destinations/core/sqlite/sqlite_client.dart';
 
 SqliteClient inMemoryClient(String dbScript) {
   return SqliteClient(

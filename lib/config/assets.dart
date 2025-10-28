@@ -12,6 +12,6 @@ abstract class Assets {
       throw ArgumentError("ID must be between $min and $max. $id given");
     }
 
-    return "assets/tourist_api/images/$id.png";
+    return "assets/tourist_api/images/$id.jpg";
   }
 }

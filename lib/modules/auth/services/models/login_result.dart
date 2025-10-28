@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:projeto_livre_pam/modules/auth/dto/profile/profile_dto.dart';
+
+import '../../dto/profile/profile_dto.dart';
 
 part 'login_result.freezed.dart';
 

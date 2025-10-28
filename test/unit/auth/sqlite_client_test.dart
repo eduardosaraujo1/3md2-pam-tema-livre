@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:projeto_livre_pam/core/sqlite/sqlite_client.dart';
+import 'package:hot_tourist_destinations/core/sqlite/sqlite_client.dart';
 
 void main() {
   /** Requirements:

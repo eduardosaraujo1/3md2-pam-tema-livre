@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:projeto_livre_pam/config/assets.dart';
+
+import '../../../../config/assets.dart';
 
 class LoginDecorator extends StatelessWidget {
   const LoginDecorator({required this.child, super.key});
@@ -10,30 +11,43 @@ class LoginDecorator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          _Decorator(),
-          SingleChildScrollView(child: child),
-        ],
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          final height = constraints.maxHeight;
+
+          return Column(
+            children: [
+              _Decorator(height: height * 0.4),
+              SafeArea(
+                child: SingleChildScrollView(
+                  physics: AlwaysScrollableScrollPhysics(),
+                  child: child,
+                ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }
 }
 
 class _Decorator extends StatelessWidget {
-  const _Decorator();
+  const _Decorator({this.height = 400});
+
+  final double height;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
     return SizedBox(
-      height: 400,
+      height: height,
       child: Stack(
         children: [
           // Custom shaped background
           CustomPaint(
-            size: const Size(double.infinity, 400),
+            size: Size(double.infinity, height),
             painter: _DecoratorPainter(
               fillColor: theme.colorScheme.primary,
               strokeColor: theme.colorScheme.onSurface,

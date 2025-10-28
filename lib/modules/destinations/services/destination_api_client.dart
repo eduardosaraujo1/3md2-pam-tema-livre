@@ -3,8 +3,8 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:multiple_result/multiple_result.dart';
-import 'package:projeto_livre_pam/config/assets.dart';
 
+import '../../../config/assets.dart';
 import '../dto/destination_dto.dart';
 
 class DestinationApiClient {

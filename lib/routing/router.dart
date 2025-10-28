@@ -10,6 +10,7 @@ import 'routes.dart';
 final _getIt = GetIt.I;
 
 final _goRouter = GoRouter(
+  redirect: _redirectHandler,
   routes: [
     GoRoute(
       path: Routes.home,
@@ -17,7 +18,6 @@ final _goRouter = GoRouter(
     ),
     GoRoute(
       path: Routes.login,
-      redirect: _redirectHandler,
       builder: (context, state) {
         final authModule = _getIt<AuthModule>();
         return LoginScreen(

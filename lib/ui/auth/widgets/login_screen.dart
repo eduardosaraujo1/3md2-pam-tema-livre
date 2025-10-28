@@ -94,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     return LoginDecorator(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Form(
           key: _formKey,
           child: Column(
@@ -102,11 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               // Headline
-              Text(
-                'Iniciar sessão',
-                style: theme.textTheme.headlineSmall,
-                textAlign: TextAlign.center,
-              ),
+              Text('Iniciar sessão', style: theme.textTheme.headlineSmall),
 
               // Email field
               TextFormField(
@@ -129,18 +125,21 @@ class _LoginScreenState extends State<LoginScreen> {
                 obscureText: true,
                 validator: _validatePassword,
               ),
+
               // Login button
               ValueListenableBuilder(
                 valueListenable: _viewModel.loginCommand.canExecute,
                 builder: (context, canExecute, child) {
                   return Column(
-                    spacing: 4,
                     children: [
-                      FilledButton(
-                        onPressed: canExecute ? _handleLogin : null,
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(vertical: 12.0),
-                          child: Text('Entrar'),
+                      SizedBox(
+                        width: double.infinity,
+                        child: FilledButton(
+                          onPressed: canExecute ? _handleLogin : null,
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 12.0),
+                            child: Text('Entrar'),
+                          ),
                         ),
                       ),
                       // Sign up text

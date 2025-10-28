@@ -1,4 +1,4 @@
-package com.example.projeto_livre_pam
+package com.example.hot_tourist_destinations
 
 import io.flutter.embedding.android.FlutterActivity
 

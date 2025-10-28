@@ -1,7 +1,7 @@
 import 'package:multiple_result/multiple_result.dart';
-import 'package:projeto_livre_pam/modules/destinations/dto/destination_metadata.dart';
 
 import 'dto/destination_dto.dart';
+import 'dto/destination_metadata.dart';
 
 abstract class DestinationModule {
   /// Lists all destinations available
