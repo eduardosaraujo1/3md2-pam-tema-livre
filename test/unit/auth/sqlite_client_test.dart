@@ -18,7 +18,7 @@ void main() {
   });
 
   test("it stored value persistently and retrieves", () async {
-    await sqliteClient.connect();
+    await sqliteClient.open();
     await sqliteClient.database.insert('test_table', {'value': 'test_user'});
 
     final List<Map<String, dynamic>> result = await sqliteClient.database.query(

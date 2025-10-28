@@ -8,7 +8,7 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 ///
 /// Supports iOS, Android, Windows, Linux, and MacOS.
 /// Each instance manages a separate database file.
-/// Must be initialized before use by calling [connect].
+/// Must be initialized before use by calling [open].
 class SqliteClient {
   SqliteClient({
     required this.databaseFileName,
@@ -32,11 +32,11 @@ class SqliteClient {
 
   /// Get the database instance
   ///
-  /// Throws [StateError] if not initialized. Call [connect] first.
+  /// Throws [StateError] if not initialized. Call [open] first.
   Database get database {
     if (_database == null) {
       throw StateError(
-        'Database not initialized. Call connect() before using the database.',
+        'Database not initialized. Call open() before using the database.',
       );
     }
     return _database!;
@@ -65,7 +65,7 @@ class SqliteClient {
   ///
   /// Creates the database file if it doesn't exist and runs [onCreate] callback.
   /// Subsequent calls will reuse the existing database.
-  Future<void> connect() async {
+  Future<void> open() async {
     if (_database != null) {
       return; // Already initialized
     }

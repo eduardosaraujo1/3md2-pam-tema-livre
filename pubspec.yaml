@@ -7,13 +7,18 @@ environment:
   sdk: ^3.9.2
 
 dependencies:
+  bcrypt: ^1.1.3
   country_flags: ^4.1.0
   flutter:
     sdk: flutter
   flutter_dotenv: ^6.0.0
+  flutter_secure_storage: ^4.2.1
   flutter_svg: ^2.2.1
+  freezed_annotation: ^3.1.0
   get_it: ^8.2.0
   logging: ^1.3.0
+  mocktail: ^1.0.4
+  multiple_result: ^5.2.0
   path: ^1.9.1
   path_provider: ^2.1.5
   sqflite_common_ffi: ^2.3.6
@@ -23,6 +28,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+  build_runner: ^2.7.1
+  freezed: ^3.2.3
 
 flutter:
   uses-material-design: true
@@ -30,3 +37,4 @@ flutter:
     - assets/tourist_api/destinations.json
     - assets/tourist_api/images/
     - assets/brand/logo_light.svg
+    - assets/sql/create_db.sql
