@@ -1,10 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
-import 'package:hot_tourist_destinations/core/sqlite/sqlite_client.dart';
 import 'package:hot_tourist_destinations/modules/auth/auth_module.dart';
-import 'package:hot_tourist_destinations/modules/auth/auth_module_impl.dart';
-import 'package:hot_tourist_destinations/modules/auth/services/local_auth_client.dart';
-import 'package:hot_tourist_destinations/modules/auth/services/token_store.dart';
 import 'package:hot_tourist_destinations/ui/auth/view_models/login_view_model.dart';
 
 import '../../../testing/dependencies.dart' as dependencies;
@@ -14,24 +10,14 @@ final _getIt = GetIt.I;
 void main() {
   late LoginViewModel viewModel;
   late AuthModule authModule;
-  late SqliteClient sqliteClient;
 
   setUpAll(() async {
     await dependencies.setupDependencies();
   });
 
   setUp(() async {
-    sqliteClient = await _getIt.getAsync<SqliteClient>();
-
-    authModule = AuthModuleImpl(
-      apiClient: LocalAuthClient(sqliteClient: sqliteClient),
-      tokenStore: TokenStore(secureStorage: _getIt()),
-    );
+    authModule = await _getIt.getAsync();
     viewModel = LoginViewModel(authModule: authModule);
-  });
-
-  tearDown(() async {
-    await sqliteClient.close();
   });
 
   /**Requirements

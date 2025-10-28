@@ -11,23 +11,26 @@ class TokenStore {
 
   final ValueNotifier<String?> tokenNotifier = ValueNotifier<String?>(null);
 
+  String? get token => tokenNotifier.value;
+
   /// Saves the given [token] in FlutterSecureStorage.
   ///
   /// Caches result for faster future access
   Future<void> saveToken(String token) async {
-    tokenNotifier.value = token;
     await _secureStorage.write(key: key, value: token);
+    tokenNotifier.value = token;
   }
 
-  /// Gets the stored token in FlutterSecureStorage.
+  /// Loads the stored token in FlutterSecureStorage into tokenNotifier.
   ///
-  /// Caches result for faster future access
-  Future<String?> getToken() async {
-    tokenNotifier.value ??= await _secureStorage.read(key: key);
+  /// Returns the obtained token
+  Future<String?> loadToken() async {
+    tokenNotifier.value = await _secureStorage.read(key: key);
+
     return tokenNotifier.value;
   }
 
-  /// Synchronous version of [getToken].
+  /// Synchronous version of [loadToken].
   ///
   /// Does not perform any I/O operations. Uses in-memory cache entry.
   String? getTokenSync() {
@@ -36,7 +39,8 @@ class TokenStore {
 
   /// Deletes the stored token in FlutterSecureStorage.
   Future<void> deleteToken() async {
-    tokenNotifier.value = null;
     await _secureStorage.delete(key: key);
+
+    tokenNotifier.value = null;
   }
 }

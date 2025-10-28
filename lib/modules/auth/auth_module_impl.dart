@@ -18,13 +18,13 @@ class AuthModuleImpl implements AuthModule {
 
   @override
   Future<void> initialize() async {
-    tokenNotifier.value = await tokenStore.getToken();
+    await tokenStore.loadToken();
   }
 
   @override
   Future<Result<ProfileDto?, Exception>> getProfile() async {
     try {
-      final token = await tokenStore.getToken();
+      final token = tokenStore.token;
 
       if (token == null) {
         return Success(null);
@@ -73,7 +73,7 @@ class AuthModuleImpl implements AuthModule {
   @override
   Future<Result<void, Exception>> logout() async {
     try {
-      final token = await tokenStore.getToken();
+      final token = tokenStore.token;
 
       if (token != null) {
         await apiClient.logout(token);
@@ -103,6 +103,10 @@ class AuthModuleImpl implements AuthModule {
         await tokenStore.saveToken(success.token);
 
         return Success(success.user);
+      }
+
+      if (error == ErrorDictionary.emailInUse) {
+        return Error(EmailAlreadyInUseException());
       }
 
       return Error(Exception('Failed to register: $error'));

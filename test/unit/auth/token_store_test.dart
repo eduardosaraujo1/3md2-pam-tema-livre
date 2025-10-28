@@ -15,7 +15,7 @@ void main() {
   test('stores and retrieves tokens', () async {
     const token = 'test_token';
     await tokenStore.saveToken(token);
-    final retrievedToken = await tokenStore.getToken();
+    final retrievedToken = await tokenStore.loadToken();
     expect(retrievedToken, token);
   });
 
@@ -25,7 +25,7 @@ void main() {
     await tokenStore.saveToken(token);
     await tokenStore.deleteToken();
 
-    final retrievedToken = await tokenStore.getToken();
+    final retrievedToken = await tokenStore.loadToken();
     expect(retrievedToken, isNull);
   });
 }

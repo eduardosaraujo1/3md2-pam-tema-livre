@@ -4,7 +4,9 @@ import 'package:go_router/go_router.dart';
 
 import '../modules/auth/auth_module.dart';
 import '../ui/auth/view_models/login_view_model.dart';
+import '../ui/auth/view_models/register_view_model.dart';
 import '../ui/auth/widgets/login_screen.dart';
+import '../ui/auth/widgets/register_screen.dart';
 import 'routes.dart';
 
 final _getIt = GetIt.I;
@@ -30,14 +32,32 @@ final _goRouter = GoRouter(
       path: Routes.register,
       redirect: _redirectHandler,
       builder: (context, state) {
-        // final authModule = _getIt<AuthModule>();
-        return Placeholder(); // TODO: Replace with RegisterScreen when implemented
+        final authModule = _getIt<AuthModule>();
+        return RegisterScreen(
+          viewModelFactory: () => RegisterViewModel(authModule: authModule),
+        );
       },
     ),
     GoRoute(
       path: Routes.destinations,
       builder: (context, state) {
-        return Placeholder(); // TODO: Replace with DestinationsScreen when implemented
+        final authModule = _getIt<AuthModule>();
+        final user = authModule.getProfile();
+        return Scaffold(
+          body: Center(
+            child: FutureBuilder(
+              future: user,
+              builder: (context, val) {
+                if (val.hasError) return Text(val.error.toString());
+                if (!val.hasData) return CircularProgressIndicator();
+
+                return Text(
+                  val.data?.tryGetSuccess()?.toString() ?? "User Not Found",
+                );
+              },
+            ),
+          ),
+        );
       },
     ),
   ],

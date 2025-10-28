@@ -107,10 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
               // Email field
               TextFormField(
                 controller: _emailController,
-                decoration: const InputDecoration(
-                  labelText: 'E-mail',
-                  border: OutlineInputBorder(),
-                ),
+                decoration: const InputDecoration(labelText: 'E-mail'),
                 keyboardType: TextInputType.emailAddress,
                 validator: _validateEmail,
               ),
@@ -118,10 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
               // Password field
               TextFormField(
                 controller: _passwordController,
-                decoration: const InputDecoration(
-                  labelText: 'Senha',
-                  border: OutlineInputBorder(),
-                ),
+                decoration: const InputDecoration(labelText: 'Senha'),
                 obscureText: true,
                 validator: _validatePassword,
               ),
@@ -152,6 +146,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Text(
                           'Não tem uma conta? Cadastre-se',
                           style: theme.textTheme.bodyMedium?.copyWith(
+                            color: theme.colorScheme.primary,
+                            decorationColor: theme.colorScheme.primary,
                             decoration: TextDecoration.underline,
                           ),
                           textAlign: TextAlign.center,

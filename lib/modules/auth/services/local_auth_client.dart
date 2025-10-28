@@ -1,5 +1,6 @@
 import 'package:bcrypt/bcrypt.dart';
 import 'package:multiple_result/multiple_result.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import '../../../core/sqlite/sqlite_client.dart';
 import '../dto/profile/profile_dto.dart';
@@ -22,6 +23,10 @@ class LocalAuthClient {
     String password,
   ) async {
     try {
+      await Future.delayed(
+        Duration(milliseconds: 500),
+      ); // Simulate network delay
+
       final List<Map<String, dynamic>> results = await sqliteClient.database
           .query('users', where: 'email = ?', whereArgs: [email]);
 
@@ -55,13 +60,20 @@ class LocalAuthClient {
     String password,
   ) async {
     try {
+      await Future.delayed(
+        Duration(milliseconds: 500),
+      ); // Simulate network delay
       final passwordHash = BCrypt.hashpw(password, BCrypt.gensalt());
 
       final userId = await sqliteClient.database.insert('users', {
         'name': name,
         'email': email,
         'password_hash': passwordHash,
-      });
+      }, conflictAlgorithm: ConflictAlgorithm.fail);
+
+      if (userId == 0) {
+        return Error(ErrorDictionary.emailInUse);
+      }
 
       final List<Map<String, dynamic>> results = await sqliteClient.database
           .query('users', where: 'id = ?', whereArgs: [userId]);
@@ -83,6 +95,7 @@ class LocalAuthClient {
   ///
   /// Does not handle errors.
   Future<void> logout(String token) async {
+    await Future.delayed(Duration(milliseconds: 500)); // Simulate network delay
     await sqliteClient.database.delete(
       'tokens',
       where: 'token = ?',
@@ -103,6 +116,9 @@ class LocalAuthClient {
 
   Future<Result<ProfileDto, String>> getProfile(String token) async {
     try {
+      await Future.delayed(
+        Duration(milliseconds: 500),
+      ); // Simulate network delay
       final List<Map<String, dynamic>> tokenResults = await sqliteClient
           .database
           .query('tokens', where: 'token = ?', whereArgs: [token]);

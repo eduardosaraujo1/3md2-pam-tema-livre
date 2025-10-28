@@ -32,6 +32,8 @@ abstract class AuthModule {
   /// Registers a user with the given [name], [email] and [password].
   ///
   /// Returns a [ProfileDto] on success or an [Exception] on failure.
+  ///
+  /// Returns a [EmailAlreadyInUseException] if the e-mail is already registered.
   Future<Result<ProfileDto, Exception>> register(
     String name,
     String email,
@@ -43,3 +45,5 @@ abstract class AuthModule {
 }
 
 class IncorrectLoginCredentialsException implements Exception {}
+
+class EmailAlreadyInUseException implements Exception {}

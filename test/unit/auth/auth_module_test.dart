@@ -88,7 +88,7 @@ void main() {
 
           // Act
           await authModule.register(name, email, password);
-          final token = await tokenStore.getToken();
+          final token = await tokenStore.loadToken();
 
           // Assert
           expect(token, isNotNull);
@@ -153,7 +153,7 @@ void main() {
 
         // Assert
         expect(error, isNull);
-        final token = await tokenStore.getToken();
+        final token = await tokenStore.loadToken();
         expect(token, isNotNull);
         expect(token, isNotEmpty);
       });
@@ -245,7 +245,7 @@ void main() {
 
         // Assert
         expect(error, isNull);
-        final token = await tokenStore.getToken();
+        final token = await tokenStore.loadToken();
         expect(token, isNull);
       });
 

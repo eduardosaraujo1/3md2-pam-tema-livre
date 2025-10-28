@@ -15,6 +15,8 @@ Future<void> setupDependencies() async {
   await _registerCoreDependencies();
   await _registerAuthDependencies();
 
+  await _getIt<AuthModule>().initialize();
+
   await _getIt.get<SqliteClient>().open();
 }
 

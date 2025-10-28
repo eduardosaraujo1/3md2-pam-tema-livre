@@ -349,6 +349,9 @@ class MaterialTheme {
       foregroundColor: colorScheme.onSurface,
       surfaceTintColor: colorScheme.surfaceTint,
     ),
+    inputDecorationTheme: InputDecorationTheme(
+      border: OutlineInputBorder(), //
+    ),
     snackBarTheme: SnackBarThemeData(behavior: SnackBarBehavior.floating),
     canvasColor: colorScheme.surface,
   );

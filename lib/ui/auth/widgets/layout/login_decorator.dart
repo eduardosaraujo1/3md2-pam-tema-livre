@@ -15,16 +15,14 @@ class LoginDecorator extends StatelessWidget {
         builder: (context, constraints) {
           final height = constraints.maxHeight;
 
-          return Column(
-            children: [
-              _Decorator(height: height * 0.4),
-              SafeArea(
-                child: SingleChildScrollView(
-                  physics: AlwaysScrollableScrollPhysics(),
-                  child: child,
-                ),
-              ),
-            ],
+          return SingleChildScrollView(
+            physics: AlwaysScrollableScrollPhysics(),
+            child: Column(
+              children: [
+                _Decorator(height: height * 0.4),
+                SafeArea(child: child),
+              ],
+            ),
           );
         },
       ),
