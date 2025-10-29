@@ -57,63 +57,60 @@ class _DestinationListState extends State<DestinationList> {
         onRefresh: () async {
           _viewModel.loadDestinationsCommand.execute();
         },
-        child: SingleChildScrollView(
-          physics: AlwaysScrollableScrollPhysics(),
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          child: ValueListenableBuilder(
-            valueListenable: _viewModel.loadDestinationsCommand,
-            builder: (context, value, child) {
-              final command = _viewModel.loadDestinationsCommand;
-              if (value == null || !command.canExecute.value) {
-                return Center(
-                  child: CircularProgressIndicator(color: colorscheme.primary),
-                );
-              }
-
-              if (value.isError()) {
-                return Center(
-                  child: Text(
-                    'Ocorreu um erro ao carregar os destinos.',
-                    style: theme.textTheme.bodyLarge,
-                  ),
-                );
-              }
-
-              final destinations = value.tryGetSuccess()!;
-
-              if (destinations.isEmpty) {
-                return Center(
-                  child: Text(
-                    'Nenhum destino encontrado.',
-                    style: theme.textTheme.bodyLarge,
-                  ),
-                );
-              }
-
-              return ListView.builder(
-                shrinkWrap: true,
-                physics: AlwaysScrollableScrollPhysics(),
-                itemCount: destinations.length,
-                itemBuilder: (context, index) {
-                  final destination = destinations[index];
-                  return DestinationCard(
-                    destination: destination,
-                    onTapFavorite: () {
-                      // Toggle favorite status
-                      _viewModel.markFavorite(
-                        destination.id,
-                        !destination.isFavorite,
-                      );
-                    },
-                    onTapEdit: () {
-                      // Handle edit observations
-                      context.go(Routes.destination(destination.id));
-                    },
-                  );
-                },
+        child: ValueListenableBuilder(
+          valueListenable: _viewModel.loadDestinationsCommand,
+          builder: (context, value, child) {
+            final command = _viewModel.loadDestinationsCommand;
+            if (value == null || !command.canExecute.value) {
+              return Center(
+                child: CircularProgressIndicator(color: colorscheme.primary),
               );
-            },
-          ),
+            }
+
+            if (value.isError()) {
+              return Center(
+                child: Text(
+                  'Ocorreu um erro ao carregar os destinos.',
+                  style: theme.textTheme.bodyLarge,
+                ),
+              );
+            }
+
+            final destinations = value.tryGetSuccess()!;
+
+            if (destinations.isEmpty) {
+              return Center(
+                child: Text(
+                  'Nenhum destino encontrado.',
+                  style: theme.textTheme.bodyLarge,
+                ),
+              );
+            }
+
+            return ListView.builder(
+              padding: const EdgeInsets.all(8.0),
+              shrinkWrap: true,
+              physics: AlwaysScrollableScrollPhysics(),
+              itemCount: destinations.length,
+              itemBuilder: (context, index) {
+                final destination = destinations[index];
+                return DestinationCard(
+                  destination: destination,
+                  onTapFavorite: () {
+                    // Toggle favorite status
+                    _viewModel.markFavorite(
+                      destination.id,
+                      !destination.isFavorite,
+                    );
+                  },
+                  onTapEdit: () {
+                    // Handle edit observations
+                    context.go(Routes.destination(destination.id));
+                  },
+                );
+              },
+            );
+          },
         ),
       ),
     );
