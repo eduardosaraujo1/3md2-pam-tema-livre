@@ -6,6 +6,8 @@ import 'routing/router.dart';
 import 'theme.dart' as themes;
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   await Environment.initialize();
 
   await setupDependencies();

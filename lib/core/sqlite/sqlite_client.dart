@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
+import 'package:sqflite/sqflite.dart' as sf;
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 /// Cross-platform SQLite database wrapper using sqflite_common_ffi
@@ -55,7 +56,7 @@ class SqliteClient {
     } else {
       // On iOS/Android/MacOS, use the default factory
       // This will use the system SQLite (or sqlite3_flutter_libs if added)
-      _databaseFactory = databaseFactoryFfi;
+      _databaseFactory = sf.databaseFactory;
     }
 
     return _databaseFactory!;
@@ -65,7 +66,7 @@ class SqliteClient {
   ///
   /// Creates the database file if it doesn't exist and runs [onCreate] callback.
   /// Subsequent calls will reuse the existing database.
-  Future<void> open() async {
+  Future<void> open({bool recreate = false}) async {
     if (_database != null) {
       return; // Already initialized
     }
@@ -78,6 +79,11 @@ class SqliteClient {
       // Get the application documents directory for persistent storage
       final databasesPath = await getApplicationDocumentsDirectory();
       path = p.join(databasesPath.path, databaseFileName);
+
+      // Delete existing database if recreate is true
+      if (recreate) {
+        await databaseFactory.deleteDatabase(path);
+      }
     }
 
     // Open or create the database

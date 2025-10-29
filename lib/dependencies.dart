@@ -44,13 +44,22 @@ Future<void> _registerDestinationDependencies() async {
 }
 
 Future<void> _registerCoreDependencies() async {
+  final dbScript = await rootBundle.loadString(Assets.createDbScript);
+
   _getIt.registerSingleton<SqliteClient>(
     SqliteClient(
       databaseFileName: 'app_database.db',
       onCreate: (db, version) async {
-        final script = await rootBundle.loadString(Assets.createDbScript);
+        // Split the script into individual statements and execute each one
+        final statements = dbScript
+            .split(';')
+            .map((s) => s.trim())
+            .where((s) => s.isNotEmpty)
+            .toList();
 
-        await db.execute(script);
+        for (final statement in statements) {
+          await db.execute(statement);
+        }
       },
     ),
     dispose: (client) async {
