@@ -11,11 +11,9 @@ void main() {
   late LoginViewModel viewModel;
   late AuthModule authModule;
 
-  setUpAll(() async {
-    await dependencies.setupDependencies();
-  });
-
   setUp(() async {
+    await dependencies.setupDependencies();
+
     authModule = await _getIt.getAsync();
     viewModel = LoginViewModel(authModule: authModule);
   });

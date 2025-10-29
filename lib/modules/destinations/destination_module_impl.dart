@@ -31,6 +31,7 @@ class DestinationModuleImpl implements DestinationModule {
 
       final (success: destinations, error: apiError) =
           (await _apiClient.listDestinations()).getBoth();
+
       final (
         success: userDestinations,
         error: metadataError,
@@ -106,7 +107,17 @@ class DestinationModuleImpl implements DestinationModule {
       return Error(Exception(metaError));
     }
 
-    return Success(DestinationDto.fromParts(destination!, metadata!));
+    if (metadata == null) {
+      var emptyMetadata = DestinationMeta(
+        userId: _userId!,
+        destinationId: destinationId,
+        isFavorite: false,
+        observation: null,
+      );
+      return Success(DestinationDto.fromParts(destination!, emptyMetadata));
+    }
+
+    return Success(DestinationDto.fromParts(destination!, metadata));
   }
 
   @override
