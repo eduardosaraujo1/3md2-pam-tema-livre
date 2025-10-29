@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hot_tourist_destinations/routing/routes.dart';
-import 'package:hot_tourist_destinations/ui/auth/view_models/register_view_model.dart';
-import 'package:hot_tourist_destinations/ui/auth/widgets/layout/login_decorator.dart';
-import 'package:hot_tourist_destinations/ui/core/snackbar.dart';
+
+import '../../../routing/routes.dart';
+import '../../core/snackbar.dart';
+import '../view_models/register_view_model.dart';
+import 'layout/login_decorator.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({required this.viewModelFactory, super.key});

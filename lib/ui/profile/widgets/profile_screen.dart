@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hot_tourist_destinations/ui/core/brand_appbar.dart';
 
 import '../../../routing/routes.dart';
+import '../../core/brand_appbar.dart';
 import '../../core/snackbar.dart';
 import '../view_models/profile_view_model.dart';
 

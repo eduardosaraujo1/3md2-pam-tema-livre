@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hot_tourist_destinations/routing/routes.dart';
+
+import '../../routing/routes.dart';
 
 class BrandNavbar extends StatelessWidget {
   const BrandNavbar({this.currentIndex = 0, this.onTap, super.key});

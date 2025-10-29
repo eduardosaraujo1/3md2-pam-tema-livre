@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hot_tourist_destinations/routing/routes.dart';
 
+import '../../routing/routes.dart';
 import 'brand_navbar.dart';
 
 class ScaffoldWithNavbar extends StatelessWidget {

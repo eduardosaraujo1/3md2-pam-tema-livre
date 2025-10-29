@@ -87,4 +87,25 @@ class LocalAuthClient {
     await Future.delayed(Duration(milliseconds: 500)); // Simulate network delay
     // No-op: No tokens to delete anymore
   }
+
+  Future<Result<ProfileDto, String>> getProfile(int userId) async {
+    try {
+      await Future.delayed(
+        Duration(milliseconds: 500),
+      ); // Simulate network delay
+
+      final List<Map<String, dynamic>> results = await sqliteClient.database
+          .query('users', where: 'id = ?', whereArgs: [userId]);
+
+      if (results.isEmpty) {
+        return Error('User not found');
+      }
+
+      final user = results.first;
+
+      return Success(ProfileDto.fromJson(user));
+    } catch (e) {
+      return Error('Failed to get profile: $e');
+    }
+  }
 }

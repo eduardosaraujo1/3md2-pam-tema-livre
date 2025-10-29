@@ -1,16 +1,16 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
-import 'package:hot_tourist_destinations/modules/destinations/destination_module.dart';
-import 'package:hot_tourist_destinations/modules/destinations/destination_module_impl.dart';
-import 'package:hot_tourist_destinations/modules/destinations/services/destination_api_client.dart';
-import 'package:hot_tourist_destinations/modules/destinations/services/destination_metadata_client.dart';
 
 import 'config/assets.dart';
 import 'core/sqlite/sqlite_client.dart';
 import 'modules/auth/auth_module.dart';
 import 'modules/auth/auth_module_impl.dart';
 import 'modules/auth/services/local_auth_client.dart';
+import 'modules/destinations/destination_module.dart';
+import 'modules/destinations/destination_module_impl.dart';
+import 'modules/destinations/services/destination_api_client.dart';
+import 'modules/destinations/services/destination_metadata_client.dart';
 
 final _getIt = GetIt.I;
 
@@ -19,9 +19,8 @@ Future<void> setupDependencies() async {
   await _registerAuthDependencies();
   await _registerDestinationDependencies();
 
-  await _getIt<AuthModule>().initialize();
-
   await _getIt.get<SqliteClient>().open();
+  await _getIt<AuthModule>().initialize();
 }
 
 Future<void> _registerAuthDependencies() async {

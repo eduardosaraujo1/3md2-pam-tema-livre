@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:multiple_result/multiple_result.dart';
 
 import 'auth_module.dart';
@@ -16,6 +17,18 @@ class AuthModuleImpl implements AuthModule {
   @override
   ValueNotifier<ProfileDto?> get profileNotifier => _profileNotifier;
 
+  // Dirty but I don't care
+  static const String _autoLoginKey = 'autoLoginId';
+  final FlutterSecureStorage _secureStorage = const FlutterSecureStorage();
+
+  Future<int?> get autoLoginId async {
+    final value = await _secureStorage.read(key: _autoLoginKey);
+
+    if (value == null) return null;
+
+    return int.tryParse(value);
+  }
+
   /// Gets the current user ID from the profile.
   ///
   /// Returns null if no user is logged in.
@@ -25,7 +38,14 @@ class AuthModuleImpl implements AuthModule {
 
   @override
   Future<void> initialize() async {
-    // No initialization needed - profile is managed in memory
+    final userId = await autoLoginId;
+    if (userId == null) return;
+
+    final result = await apiClient.getProfile(userId);
+    final (:success, :error) = result.getBoth();
+    if (success != null) {
+      _profileNotifier.value = success;
+    }
   }
 
   @override
@@ -54,6 +74,8 @@ class AuthModuleImpl implements AuthModule {
         return Error(IncorrectLoginCredentialsException());
       }
 
+      _secureStorage.write(key: _autoLoginKey, value: success?.id.toString());
+
       return Error(Exception(error));
     } catch (e) {
       return Error(Exception('Login Module Error - $e'));
@@ -65,6 +87,7 @@ class AuthModuleImpl implements AuthModule {
     try {
       await apiClient.logout();
       _profileNotifier.value = null;
+      _secureStorage.delete(key: _autoLoginKey);
 
       return Success(null);
     } catch (e) {
