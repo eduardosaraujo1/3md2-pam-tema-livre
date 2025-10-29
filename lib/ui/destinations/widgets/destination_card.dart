@@ -1,8 +1,8 @@
-import 'package:country_flags/country_flags.dart';
 import 'package:flutter/material.dart';
 
 import '../../../config/assets.dart';
 import '../../../modules/destinations/dto/destination_dto.dart';
+import 'circular_flag.dart';
 
 class DestinationCard extends StatefulWidget {
   const DestinationCard({
@@ -49,7 +49,7 @@ class _DestinationCardState extends State<DestinationCard> {
               child: Row(
                 children: [
                   // Circular flag avatar
-                  _CircularFlag(code: widget.destination.countryCode),
+                  CircularFlag(code: widget.destination.countryCode),
                   const SizedBox(width: 16),
                   // Name and location
                   _headingInfo(theme, colorScheme),
@@ -151,30 +151,6 @@ class _DestinationCardState extends State<DestinationCard> {
             overflow: TextOverflow.ellipsis,
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _CircularFlag extends StatelessWidget {
-  const _CircularFlag({required this.code});
-
-  final String code;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
-
-    return ClipOval(
-      child: Container(
-        width: 32,
-        height: 32,
-        decoration: BoxDecoration(color: colorScheme.surfaceContainerHigh),
-        child: FittedBox(
-          fit: BoxFit.cover,
-          child: CountryFlag.fromCountryCode(code),
-        ),
       ),
     );
   }

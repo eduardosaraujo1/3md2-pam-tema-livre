@@ -352,7 +352,10 @@ class MaterialTheme {
     inputDecorationTheme: InputDecorationTheme(
       border: OutlineInputBorder(), //
     ),
-    snackBarTheme: SnackBarThemeData(behavior: SnackBarBehavior.floating),
+    snackBarTheme: SnackBarThemeData(
+      behavior: SnackBarBehavior.floating,
+      showCloseIcon: true,
+    ),
     canvasColor: colorScheme.surface,
   );
 
