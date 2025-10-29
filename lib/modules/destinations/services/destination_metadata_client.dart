@@ -1,5 +1,4 @@
 import 'package:multiple_result/multiple_result.dart';
-import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import '../../../core/sqlite/sqlite_client.dart';
 import 'models/destination_meta/destination_meta.dart';
@@ -72,11 +71,17 @@ class DestinationMetadataClient {
     String observation,
   ) async {
     try {
-      await _sqliteClient.database.insert('destination_metadata', {
-        'destination_id': destinationId,
-        'user_id': userId,
-        'observation': observation,
-      }, conflictAlgorithm: ConflictAlgorithm.replace);
+      // Use INSERT OR IGNORE to create the row if it doesn't exist,
+      // then UPDATE to set only the observation field
+      await _sqliteClient.database.rawInsert(
+        '''
+        INSERT INTO destination_metadata (user_id, destination_id, observation, is_favorite)
+        VALUES (?, ?, ?, 0)
+        ON CONFLICT(user_id, destination_id)
+        DO UPDATE SET observation = ?
+      ''',
+        [userId, destinationId, observation, observation],
+      );
 
       return Success(null);
     } catch (e) {
@@ -106,11 +111,17 @@ class DestinationMetadataClient {
     bool isFavorite,
   ) async {
     try {
-      await _sqliteClient.database.insert('destination_metadata', {
-        'destination_id': destinationId,
-        'user_id': userId,
-        'is_favorite': isFavorite ? 1 : 0,
-      }, conflictAlgorithm: ConflictAlgorithm.replace);
+      // Use INSERT OR IGNORE to create the row if it doesn't exist,
+      // then UPDATE to set only the is_favorite field
+      await _sqliteClient.database.rawInsert(
+        '''
+        INSERT INTO destination_metadata (user_id, destination_id, observation, is_favorite)
+        VALUES (?, ?, NULL, ?)
+        ON CONFLICT(user_id, destination_id)
+        DO UPDATE SET is_favorite = ?
+      ''',
+        [userId, destinationId, isFavorite ? 1 : 0, isFavorite ? 1 : 0],
+      );
 
       return Success(null);
     } catch (e) {
