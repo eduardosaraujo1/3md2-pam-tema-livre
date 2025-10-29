@@ -35,6 +35,10 @@ class ProfileViewModel extends ViewModel {
     }
   }
 
+  void logout() {
+    _authModule.logout();
+  }
+
   @override
   void dispose() {
     loadProfileCommand.dispose();

@@ -23,6 +23,8 @@ class DestinationListViewModel extends ViewModel {
   late final Command<void, Result<List<DestinationDto>, String>?>
   loadDestinationsCommand;
 
+  bool get isFavorite => _favoritesOnly;
+
   Future<Result<List<DestinationDto>, String>> _loadDestinations() async {
     try {
       final result = await _destinationModule.listDestinations();

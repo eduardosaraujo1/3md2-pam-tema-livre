@@ -4,6 +4,7 @@ abstract class Routes {
   static const String register = '/register';
 
   static const String destinations = '/destinations';
+  static String destination(int id) => '$destinations/$id';
 
   static const String favorites = '/favorites';
 
