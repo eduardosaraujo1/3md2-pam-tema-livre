@@ -2,9 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hot_tourist_destinations/modules/auth/auth_module.dart';
 import 'package:hot_tourist_destinations/modules/auth/auth_module_impl.dart';
 import 'package:hot_tourist_destinations/modules/auth/services/local_auth_client.dart';
-import 'package:hot_tourist_destinations/modules/auth/services/token_store.dart';
 
-import '../../../testing/fakes/fake_flutter_secure_storage.dart';
 import '../../../testing/fakes/sqlite.dart' as sqlite;
 
 void main() {
@@ -12,7 +10,6 @@ void main() {
 
   late String createDbScript;
   late LocalAuthClient apiClient;
-  late TokenStore tokenStore;
   late AuthModule authModule;
 
   setUpAll(() async {
@@ -24,8 +21,7 @@ void main() {
     var db = sqlite.inMemoryClient(createDbScript);
     await db.open();
     apiClient = LocalAuthClient(sqliteClient: db);
-    tokenStore = TokenStore(secureStorage: FakeFlutterSecureStorage());
-    authModule = AuthModuleImpl(apiClient: apiClient, tokenStore: tokenStore);
+    authModule = AuthModuleImpl(apiClient: apiClient);
   });
 
   group('AuthModule Requirements', () {
@@ -35,23 +31,22 @@ void main() {
      * 1. register() should:
      *    - Create a new user account with name, email, and password
      *    - Return ProfileDto on success
-     *    - Save authentication token to TokenStore
+     *    - Update profileNotifier with user profile
      *    - Return Exception on failure
      *
      * 2. login() should:
      *    - Authenticate user with email and password
      *    - Return ProfileDto on success
-     *    - Save authentication token to TokenStore
+     *    - Update profileNotifier with user profile
      *    - Return IncorrectLoginCredentialsException for wrong credentials
      *    - Return Exception on other failures
      *
      * 3. getProfile() should:
      *    - Return null when no user is authenticated
      *    - Return ProfileDto when user is authenticated
-     *    - Return Exception on failure
      *
      * 4. logout() should:
-     *    - Clear authentication token
+     *    - Clear profileNotifier
      *    - Work even when no user is logged in
      *    - Return Exception on failure
      */
@@ -79,7 +74,7 @@ void main() {
       });
 
       test(
-        'should save authentication token on successful registration',
+        'should update profileNotifier on successful registration',
         () async {
           // Arrange
           const name = 'Jane Doe';
@@ -88,11 +83,12 @@ void main() {
 
           // Act
           await authModule.register(name, email, password);
-          final token = await tokenStore.loadToken();
+          final profile = authModule.profileNotifier.value;
 
           // Assert
-          expect(token, isNotNull);
-          expect(token, isNotEmpty);
+          expect(profile, isNotNull);
+          expect(profile!.name, equals(name));
+          expect(profile.email, equals(email));
         },
       );
 
@@ -138,7 +134,7 @@ void main() {
         },
       );
 
-      test('should save authentication token on successful login', () async {
+      test('should update profileNotifier on successful login', () async {
         // Arrange
         const email = 'logintest@example.com';
         const password = 'password123';
@@ -153,9 +149,9 @@ void main() {
 
         // Assert
         expect(error, isNull);
-        final token = await tokenStore.loadToken();
-        expect(token, isNotNull);
-        expect(token, isNotEmpty);
+        final profile = authModule.profileNotifier.value;
+        expect(profile, isNotNull);
+        expect(profile!.email, equals(email));
       });
 
       test(
@@ -197,11 +193,10 @@ void main() {
     group('getProfile()', () {
       test('should return null when no user is authenticated', () async {
         // Act
-        final (:success, :error) = (await authModule.getProfile()).getBoth();
+        final profile = authModule.getProfile();
 
         // Assert
-        expect(error, isNull);
-        expect(success, isNull);
+        expect(profile, isNull);
       });
 
       test('should return ProfileDto when user is authenticated', () async {
@@ -212,13 +207,12 @@ void main() {
         await authModule.register(name, email, password);
 
         // Act
-        final (:success, :error) = (await authModule.getProfile()).getBoth();
+        final profile = authModule.getProfile();
 
         // Assert
-        expect(error, isNull);
-        expect(success, isNotNull);
-        expect(success!.name, equals(name));
-        expect(success.email, equals(email));
+        expect(profile, isNotNull);
+        expect(profile!.name, equals(name));
+        expect(profile.email, equals(email));
       });
 
       test('should return null after logout', () async {
@@ -227,16 +221,15 @@ void main() {
         await authModule.logout();
 
         // Act
-        final (:success, :error) = (await authModule.getProfile()).getBoth();
+        final profile = authModule.getProfile();
 
         // Assert
-        expect(error, isNull);
-        expect(success, isNull);
+        expect(profile, isNull);
       });
     });
 
     group('logout()', () {
-      test('should clear authentication token', () async {
+      test('should clear profileNotifier', () async {
         // Arrange
         await authModule.register('User', 'logout@example.com', 'password123');
 
@@ -245,8 +238,8 @@ void main() {
 
         // Assert
         expect(error, isNull);
-        final token = await tokenStore.loadToken();
-        expect(token, isNull);
+        final profile = authModule.profileNotifier.value;
+        expect(profile, isNull);
       });
 
       test('should succeed even when no user is logged in', () async {
@@ -263,11 +256,10 @@ void main() {
 
         // Act
         await authModule.logout();
-        final (:success, :error) = (await authModule.getProfile()).getBoth();
+        final profile = authModule.getProfile();
 
         // Assert
-        expect(error, isNull);
-        expect(success, isNull);
+        expect(profile, isNull);
       });
     });
   });

@@ -4,22 +4,20 @@ import 'package:multiple_result/multiple_result.dart';
 import 'dto/profile/profile_dto.dart';
 
 abstract class AuthModule {
-  /// Current authentication token.
+  /// Current authenticated user profile.
   ///
   /// Is updated automatically on initialize, login, register, and logout.
   ///
-  /// Exposes the current token value and notifies listeners on changes.
-  ValueNotifier<String?> get tokenNotifier;
+  /// Exposes the current profile value and notifies listeners on changes.
+  ValueNotifier<ProfileDto?> get profileNotifier;
 
-  /// Initializes the authentication module by reading the token stored in [TokenStore].
+  /// Initializes the authentication module.
   Future<void> initialize();
 
   /// Gets the user profile currently authenticated in the system.
   ///
   /// Returns a [ProfileDto] if a user is authenticated, or null if no user is logged in.
-  ///
-  /// Returns an [Exception] on failure.
-  Future<Result<ProfileDto?, Exception>> getProfile();
+  ProfileDto? getProfile();
 
   /// Logs in a user with the given [email] and [password].
   ///

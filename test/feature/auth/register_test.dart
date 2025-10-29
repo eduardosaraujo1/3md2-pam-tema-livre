@@ -36,14 +36,13 @@ void main() {
 
     // Act
     viewModel.registerCommand.execute(formData);
-    await Future.delayed(const Duration(milliseconds: 100));
+    await Future.delayed(const Duration(milliseconds: 1000));
 
     // Assert new user is authenticated
-    expect(authModule.tokenNotifier.value, isNotNull);
+    expect(authModule.profileNotifier.value, isNotNull);
 
     // Assert user was inserted
-    final (success: user, error: userError) = (await authModule.getProfile())
-        .getBoth();
+    final user = authModule.getProfile();
 
     expect(user, isNotNull);
     expect(user, isA<ProfileDto>());
@@ -59,8 +58,8 @@ void main() {
       confirmPassword: "fake-password!23",
     );
 
-    authModule.register(formData.name, formData.email, formData.password);
-    authModule.logout();
+    await authModule.register(formData.name, formData.email, formData.password);
+    await authModule.logout();
 
     // Act: try to register with same data
     viewModel.registerCommand.execute(
@@ -71,7 +70,7 @@ void main() {
         confirmPassword: formData.confirmPassword,
       ),
     );
-    await Future.delayed(const Duration(milliseconds: 100));
+    await Future.delayed(const Duration(milliseconds: 1000));
 
     // Assert result was error
     final status = viewModel.registerCommand.value;

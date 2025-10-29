@@ -5,7 +5,6 @@ import 'package:hot_tourist_destinations/core/sqlite/sqlite_client.dart';
 import 'package:hot_tourist_destinations/modules/auth/auth_module.dart';
 import 'package:hot_tourist_destinations/modules/auth/auth_module_impl.dart';
 import 'package:hot_tourist_destinations/modules/auth/services/local_auth_client.dart';
-import 'package:hot_tourist_destinations/modules/auth/services/token_store.dart';
 
 import 'fakes/fake_flutter_secure_storage.dart';
 import 'fakes/sqlite.dart' as sqlite;
@@ -30,7 +29,6 @@ Future<void> setupDependencies() async {
 
     return AuthModuleImpl(
       apiClient: LocalAuthClient(sqliteClient: sqliteClient),
-      tokenStore: TokenStore(secureStorage: _getIt()),
     );
   });
 }

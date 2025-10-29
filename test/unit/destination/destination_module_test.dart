@@ -27,13 +27,11 @@ void main() {
     await sqliteClient.open();
 
     apiClient = DestinationApiClient();
-    metadataClient = DestinationMetadataClient(
-      getCurrentUserId: () => currentUser,
-      sqliteClient: sqliteClient,
-    );
+    metadataClient = DestinationMetadataClient(sqliteClient: sqliteClient);
     destinationModule = DestinationModuleImpl(
       apiClient: apiClient,
       metadataClient: metadataClient,
+      userIdProvider: () => currentUser,
     );
   });
 
@@ -41,10 +39,11 @@ void main() {
    * Requirements:
    *
    * 1. listDestinations():
-   *    - Should fetch all destinations from the API client
-   *    - Should return Success with list of destinations on success
+   *    - Should fetch all destinations from the API client and merge with user metadata
+   *    - Should return Success with list of DestinationDto (containing both destination and user data) on success
    *    - Should return Error with exception on failure
-   *    - Should work for both authenticated and unauthenticated users
+   *    - Should ONLY work for authenticated users (requires user metadata)
+   *    - Should return Error with Exception(unauthorized) when user is not authenticated
    *
    * 2. writeDestinationObservation():
    *    - Should write an observation for a destination when user is authenticated
@@ -67,10 +66,10 @@ void main() {
    *    - Should return Error with Exception(unauthorized) when user is not authenticated
    *    - Should return Error with Exception when database operation fails
    *
-   * 5. readDestinationMetadata():
+   * 5. getDestination():
    *    - Should read metadata for a destination when user is authenticated
    *    - Should delegate to metadata client with destinationId
-   *    - Should return Success with DestinationMetadata on success
+   *    - Should return Success with DestinationDto (merged destination + user data) on success
    *    - Should return Error with Exception(unauthorized) when user is not authenticated
    *    - Should return Error with Exception when database operation fails
    *    - Should handle null metadata (no metadata exists for destination)
@@ -82,7 +81,7 @@ void main() {
     });
 
     test(
-      'listDestinations should return list of destinations from API',
+      'listDestinations should return list of destinations with user data merged',
       () async {
         // Act
         final result = await destinationModule.listDestinations();
@@ -92,6 +91,14 @@ void main() {
         result.when((destinations) {
           expect(destinations, isA<List<DestinationDto>>());
           expect(destinations.isNotEmpty, true);
+
+          // Verify that DestinationDto contains both destination and user fields
+          final firstDestination = destinations.first;
+          expect(firstDestination.id, isNotNull);
+          expect(firstDestination.name, isNotNull);
+          expect(firstDestination.location, isNotNull);
+          expect(firstDestination.isFavorite, isA<bool>());
+          expect(firstDestination.userNotes, isA<String>());
         }, (error) => fail('Should not return error'));
       },
     );
@@ -146,7 +153,7 @@ void main() {
     );
 
     test(
-      'readDestinationMetadata should return metadata after writing observation',
+      'getDestination should return metadata after writing observation',
       () async {
         // Arrange
         const destinationId = 4;
@@ -157,58 +164,47 @@ void main() {
         );
 
         // Act
-        final result = await destinationModule.readDestinationMetadata(
-          destinationId,
-        );
+        final result = await destinationModule.getDestination(destinationId);
 
         // Assert
         expect(result.isSuccess(), true);
         result.when((metadata) {
-          expect(metadata.destinationId, destinationId);
-          expect(metadata.userId, currentUser);
-          expect(metadata.observation, observation);
+          expect(metadata.id, destinationId);
+          expect(metadata.userNotes, observation);
         }, (error) => fail('Should not return error'));
       },
     );
 
     test(
-      'readDestinationMetadata should return metadata after marking as favorite',
+      'getDestination should return metadata after marking as favorite',
       () async {
         // Arrange
         const destinationId = 5;
         await destinationModule.markAsFavorite(destinationId);
 
         // Act
-        final result = await destinationModule.readDestinationMetadata(
-          destinationId,
-        );
+        final result = await destinationModule.getDestination(destinationId);
 
         // Assert
         expect(result.isSuccess(), true);
         result.when((metadata) {
-          expect(metadata.destinationId, destinationId);
-          expect(metadata.userId, currentUser);
+          expect(metadata.id, destinationId);
           expect(metadata.isFavorite, true);
         }, (error) => fail('Should not return error'));
       },
     );
 
-    test(
-      'readDestinationMetadata should handle when no metadata exists',
-      () async {
-        // Arrange
-        const destinationId = 999; // Non-existent metadata
+    test('getDestination should handle when no metadata exists', () async {
+      // Arrange
+      const destinationId = 999; // Non-existent metadata
 
-        // Act
-        final result = await destinationModule.readDestinationMetadata(
-          destinationId,
-        );
+      // Act
+      final result = await destinationModule.getDestination(destinationId);
 
-        // Assert
-        // When no metadata exists, we expect an error since nothing was written yet
-        expect(result.isError(), true);
-      },
-    );
+      // Assert
+      // When no metadata exists, we expect an error since nothing was written yet
+      expect(result.isError(), true);
+    });
   });
 
   group("Unauthenticated user", () {
@@ -216,16 +212,13 @@ void main() {
       currentUser = null; // Simulate an unauthenticated user
     });
 
-    test('listDestinations should work for unauthenticated users', () async {
+    test('listDestinations should return unauthorized error', () async {
       // Act
       final result = await destinationModule.listDestinations();
 
       // Assert
-      expect(result.isSuccess(), true);
-      result.when((destinations) {
-        expect(destinations, isA<List<DestinationDto>>());
-        expect(destinations.isNotEmpty, true);
-      }, (error) => fail('Should not return error'));
+      expect(result.isError(), true);
+      expect(result.tryGetError(), isNotNull);
     });
 
     test(
@@ -273,14 +266,12 @@ void main() {
       expect(result.isError(), true);
     });
 
-    test('readDestinationMetadata should return unauthorized error', () async {
+    test('getDestination should return unauthorized error', () async {
       // Arrange
       const destinationId = 1;
 
       // Act
-      final result = await destinationModule.readDestinationMetadata(
-        destinationId,
-      );
+      final result = await destinationModule.getDestination(destinationId);
 
       // Assert
       expect(result.tryGetError(), isNotNull);

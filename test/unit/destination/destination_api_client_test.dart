@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hot_tourist_destinations/modules/destinations/dto/destination_dto.dart';
 import 'package:hot_tourist_destinations/modules/destinations/services/destination_api_client.dart';
+import 'package:hot_tourist_destinations/modules/destinations/services/models/destination/destination.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -20,6 +20,6 @@ void main() {
 
     // Assert
     expect(error, isNull);
-    expect(success, isA<List<DestinationDto>>());
+    expect(success, isA<List<Destination>>());
   });
 }

@@ -1,19 +1,23 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
+import 'package:hot_tourist_destinations/modules/destinations/destination_module.dart';
+import 'package:hot_tourist_destinations/modules/destinations/destination_module_impl.dart';
+import 'package:hot_tourist_destinations/modules/destinations/services/destination_api_client.dart';
+import 'package:hot_tourist_destinations/modules/destinations/services/destination_metadata_client.dart';
 
 import 'config/assets.dart';
 import 'core/sqlite/sqlite_client.dart';
 import 'modules/auth/auth_module.dart';
 import 'modules/auth/auth_module_impl.dart';
 import 'modules/auth/services/local_auth_client.dart';
-import 'modules/auth/services/token_store.dart';
 
 final _getIt = GetIt.I;
 
 Future<void> setupDependencies() async {
   await _registerCoreDependencies();
   await _registerAuthDependencies();
+  await _registerDestinationDependencies();
 
   await _getIt<AuthModule>().initialize();
 
@@ -21,17 +25,21 @@ Future<void> setupDependencies() async {
 }
 
 Future<void> _registerAuthDependencies() async {
-  _getIt.registerSingleton<TokenStore>(
-    TokenStore(secureStorage: _getIt<FlutterSecureStorage>()),
-  );
-  _getIt.registerSingleton<LocalAuthClient>(
-    LocalAuthClient(sqliteClient: _getIt<SqliteClient>()),
-  );
-
   _getIt.registerSingleton<AuthModule>(
     AuthModuleImpl(
-      apiClient: _getIt<LocalAuthClient>(),
-      tokenStore: _getIt<TokenStore>(),
+      apiClient: LocalAuthClient(sqliteClient: _getIt<SqliteClient>()),
+    ),
+  );
+}
+
+Future<void> _registerDestinationDependencies() async {
+  _getIt.registerSingleton<DestinationModule>(
+    DestinationModuleImpl(
+      metadataClient: DestinationMetadataClient(
+        sqliteClient: _getIt<SqliteClient>(),
+      ),
+      apiClient: DestinationApiClient(),
+      userIdProvider: () => _getIt<AuthModule>().profileNotifier.value?.id,
     ),
   );
 }
@@ -50,5 +58,5 @@ Future<void> _registerCoreDependencies() async {
       await client.close();
     },
   );
-  _getIt.registerSingleton(FlutterSecureStorage());
+  _getIt.registerSingleton<FlutterSecureStorage>(FlutterSecureStorage());
 }

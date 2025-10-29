@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$DestinationDto {
 
- int get id; String get name; String get location; String get countryCode; String get description;
+ int get id; String get name; String get location; String get countryCode; String get description; String get userNotes; bool get isFavorite;
 /// Create a copy of DestinationDto
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $DestinationDtoCopyWith<DestinationDto> get copyWith => _$DestinationDtoCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DestinationDto&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.location, location) || other.location == location)&&(identical(other.countryCode, countryCode) || other.countryCode == countryCode)&&(identical(other.description, description) || other.description == description));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DestinationDto&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.location, location) || other.location == location)&&(identical(other.countryCode, countryCode) || other.countryCode == countryCode)&&(identical(other.description, description) || other.description == description)&&(identical(other.userNotes, userNotes) || other.userNotes == userNotes)&&(identical(other.isFavorite, isFavorite) || other.isFavorite == isFavorite));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,name,location,countryCode,description);
+int get hashCode => Object.hash(runtimeType,id,name,location,countryCode,description,userNotes,isFavorite);
 
 @override
 String toString() {
-  return 'DestinationDto(id: $id, name: $name, location: $location, countryCode: $countryCode, description: $description)';
+  return 'DestinationDto(id: $id, name: $name, location: $location, countryCode: $countryCode, description: $description, userNotes: $userNotes, isFavorite: $isFavorite)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $DestinationDtoCopyWith<$Res>  {
   factory $DestinationDtoCopyWith(DestinationDto value, $Res Function(DestinationDto) _then) = _$DestinationDtoCopyWithImpl;
 @useResult
 $Res call({
- int id, String name, String location, String countryCode, String description
+ int id, String name, String location, String countryCode, String description, String userNotes, bool isFavorite
 });
 
 
@@ -62,14 +62,16 @@ class _$DestinationDtoCopyWithImpl<$Res>
 
 /// Create a copy of DestinationDto
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? location = null,Object? countryCode = null,Object? description = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? location = null,Object? countryCode = null,Object? description = null,Object? userNotes = null,Object? isFavorite = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,location: null == location ? _self.location : location // ignore: cast_nullable_to_non_nullable
 as String,countryCode: null == countryCode ? _self.countryCode : countryCode // ignore: cast_nullable_to_non_nullable
 as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String,
+as String,userNotes: null == userNotes ? _self.userNotes : userNotes // ignore: cast_nullable_to_non_nullable
+as String,isFavorite: null == isFavorite ? _self.isFavorite : isFavorite // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 
@@ -151,10 +153,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name,  String location,  String countryCode,  String description)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name,  String location,  String countryCode,  String description,  String userNotes,  bool isFavorite)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _DestinationDto() when $default != null:
-return $default(_that.id,_that.name,_that.location,_that.countryCode,_that.description);case _:
+return $default(_that.id,_that.name,_that.location,_that.countryCode,_that.description,_that.userNotes,_that.isFavorite);case _:
   return orElse();
 
 }
@@ -172,10 +174,10 @@ return $default(_that.id,_that.name,_that.location,_that.countryCode,_that.descr
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name,  String location,  String countryCode,  String description)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name,  String location,  String countryCode,  String description,  String userNotes,  bool isFavorite)  $default,) {final _that = this;
 switch (_that) {
 case _DestinationDto():
-return $default(_that.id,_that.name,_that.location,_that.countryCode,_that.description);}
+return $default(_that.id,_that.name,_that.location,_that.countryCode,_that.description,_that.userNotes,_that.isFavorite);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -189,10 +191,10 @@ return $default(_that.id,_that.name,_that.location,_that.countryCode,_that.descr
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name,  String location,  String countryCode,  String description)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name,  String location,  String countryCode,  String description,  String userNotes,  bool isFavorite)?  $default,) {final _that = this;
 switch (_that) {
 case _DestinationDto() when $default != null:
-return $default(_that.id,_that.name,_that.location,_that.countryCode,_that.description);case _:
+return $default(_that.id,_that.name,_that.location,_that.countryCode,_that.description,_that.userNotes,_that.isFavorite);case _:
   return null;
 
 }
@@ -204,7 +206,7 @@ return $default(_that.id,_that.name,_that.location,_that.countryCode,_that.descr
 
 
 class _DestinationDto extends DestinationDto {
-  const _DestinationDto({required this.id, required this.name, required this.location, required this.countryCode, required this.description}): super._();
+  const _DestinationDto({required this.id, required this.name, required this.location, required this.countryCode, required this.description, required this.userNotes, required this.isFavorite}): super._();
   
 
 @override final  int id;
@@ -212,6 +214,8 @@ class _DestinationDto extends DestinationDto {
 @override final  String location;
 @override final  String countryCode;
 @override final  String description;
+@override final  String userNotes;
+@override final  bool isFavorite;
 
 /// Create a copy of DestinationDto
 /// with the given fields replaced by the non-null parameter values.
@@ -223,16 +227,16 @@ _$DestinationDtoCopyWith<_DestinationDto> get copyWith => __$DestinationDtoCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DestinationDto&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.location, location) || other.location == location)&&(identical(other.countryCode, countryCode) || other.countryCode == countryCode)&&(identical(other.description, description) || other.description == description));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DestinationDto&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.location, location) || other.location == location)&&(identical(other.countryCode, countryCode) || other.countryCode == countryCode)&&(identical(other.description, description) || other.description == description)&&(identical(other.userNotes, userNotes) || other.userNotes == userNotes)&&(identical(other.isFavorite, isFavorite) || other.isFavorite == isFavorite));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,name,location,countryCode,description);
+int get hashCode => Object.hash(runtimeType,id,name,location,countryCode,description,userNotes,isFavorite);
 
 @override
 String toString() {
-  return 'DestinationDto(id: $id, name: $name, location: $location, countryCode: $countryCode, description: $description)';
+  return 'DestinationDto(id: $id, name: $name, location: $location, countryCode: $countryCode, description: $description, userNotes: $userNotes, isFavorite: $isFavorite)';
 }
 
 
@@ -243,7 +247,7 @@ abstract mixin class _$DestinationDtoCopyWith<$Res> implements $DestinationDtoCo
   factory _$DestinationDtoCopyWith(_DestinationDto value, $Res Function(_DestinationDto) _then) = __$DestinationDtoCopyWithImpl;
 @override @useResult
 $Res call({
- int id, String name, String location, String countryCode, String description
+ int id, String name, String location, String countryCode, String description, String userNotes, bool isFavorite
 });
 
 
@@ -260,14 +264,16 @@ class __$DestinationDtoCopyWithImpl<$Res>
 
 /// Create a copy of DestinationDto
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? location = null,Object? countryCode = null,Object? description = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? location = null,Object? countryCode = null,Object? description = null,Object? userNotes = null,Object? isFavorite = null,}) {
   return _then(_DestinationDto(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,location: null == location ? _self.location : location // ignore: cast_nullable_to_non_nullable
 as String,countryCode: null == countryCode ? _self.countryCode : countryCode // ignore: cast_nullable_to_non_nullable
 as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String,
+as String,userNotes: null == userNotes ? _self.userNotes : userNotes // ignore: cast_nullable_to_non_nullable
+as String,isFavorite: null == isFavorite ? _self.isFavorite : isFavorite // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 

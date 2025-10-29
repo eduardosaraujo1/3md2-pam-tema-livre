@@ -7,13 +7,22 @@ import '../ui/auth/view_models/login_view_model.dart';
 import '../ui/auth/view_models/register_view_model.dart';
 import '../ui/auth/widgets/login_screen.dart';
 import '../ui/auth/widgets/register_screen.dart';
+import '../ui/core/scaffold_with_navbar.dart';
 import 'routes.dart';
 
 final _getIt = GetIt.I;
 
+final _rootNavigatorKey = GlobalKey<NavigatorState>();
+
+final _shellRouteKey = GlobalKey<NavigatorState>();
+
 final _goRouter = GoRouter(
+  navigatorKey: _rootNavigatorKey,
   redirect: _redirectHandler,
-  refreshListenable: _getIt<AuthModule>().tokenNotifier,
+  refreshListenable: _getIt<AuthModule>().profileNotifier,
+  onException: (context, state, router) {
+    router.go(Routes.home);
+  },
   routes: [
     GoRoute(
       path: Routes.home,
@@ -38,27 +47,19 @@ final _goRouter = GoRouter(
         );
       },
     ),
-    GoRoute(
-      path: Routes.destinations,
-      builder: (context, state) {
-        final authModule = _getIt<AuthModule>();
-        final user = authModule.getProfile();
-        return Scaffold(
-          body: Center(
-            child: FutureBuilder(
-              future: user,
-              builder: (context, val) {
-                if (val.hasError) return Text(val.error.toString());
-                if (!val.hasData) return CircularProgressIndicator();
-
-                return Text(
-                  val.data?.tryGetSuccess()?.toString() ?? "User Not Found",
-                );
-              },
-            ),
-          ),
-        );
+    ShellRoute(
+      navigatorKey: _shellRouteKey,
+      builder: (context, state, child) {
+        return ScaffoldWithNavbar(routerState: state, body: child);
       },
+      routes: [
+        GoRoute(
+          path: Routes.destinations,
+          builder: (context, state) {
+            return Placeholder();
+          },
+        ),
+      ],
     ),
   ],
 );
@@ -69,7 +70,7 @@ Future<String?> _redirectHandler(
 ) async {
   // Get current auth status from AuthModule
   final authModule = _getIt<AuthModule>();
-  final isAuthenticated = authModule.tokenNotifier.value != null;
+  final isAuthenticated = authModule.profileNotifier.value != null;
 
   // If not authenticated and not in login or register route, redirect to login
   if (!isAuthenticated &&

@@ -1,7 +1,7 @@
 import 'package:multiple_result/multiple_result.dart';
 
 import 'dto/destination_dto.dart';
-import 'dto/destination_metadata.dart';
+import 'services/models/destination_meta/destination_meta.dart';
 
 abstract class DestinationModule {
   /// Lists all destinations available
@@ -33,8 +33,6 @@ abstract class DestinationModule {
   /// Reads metadata for a given destination
   /// - [destinationId]: The ID of the destination
   ///
-  /// Returns [Success] with the [DestinationMetadata] or [Error]
-  Future<Result<DestinationMetadata, Exception>> readDestinationMetadata(
-    int destinationId,
-  );
+  /// Returns [Success] with the [DestinationMeta] or [Error]
+  Future<Result<DestinationDto, Exception>> getDestination(int destinationId);
 }

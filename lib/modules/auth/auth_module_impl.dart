@@ -5,41 +5,32 @@ import 'auth_module.dart';
 import 'dto/profile/profile_dto.dart';
 import 'services/local_auth_client.dart';
 import 'services/models/error_dictionary.dart';
-import 'services/token_store.dart';
 
 class AuthModuleImpl implements AuthModule {
-  const AuthModuleImpl({required this.apiClient, required this.tokenStore});
+  AuthModuleImpl({required this.apiClient});
 
   final LocalAuthClient apiClient;
-  final TokenStore tokenStore;
+
+  final ValueNotifier<ProfileDto?> _profileNotifier = ValueNotifier(null);
 
   @override
-  ValueNotifier<String?> get tokenNotifier => tokenStore.tokenNotifier;
+  ValueNotifier<ProfileDto?> get profileNotifier => _profileNotifier;
 
-  @override
-  Future<void> initialize() async {
-    await tokenStore.loadToken();
+  /// Gets the current user ID from the profile.
+  ///
+  /// Returns null if no user is logged in.
+  int? getUserId() {
+    return _profileNotifier.value?.id;
   }
 
   @override
-  Future<Result<ProfileDto?, Exception>> getProfile() async {
-    try {
-      final token = tokenStore.token;
+  Future<void> initialize() async {
+    // No initialization needed - profile is managed in memory
+  }
 
-      if (token == null) {
-        return Success(null);
-      }
-
-      final (:error, :success) = (await apiClient.getProfile(token)).getBoth();
-
-      if (error != null) {
-        return Error(Exception('Failed to get profile: $error'));
-      }
-
-      return Success(success);
-    } catch (e) {
-      return Error(Exception('Failed to get profile: $e'));
-    }
+  @override
+  ProfileDto? getProfile() {
+    return _profileNotifier.value;
   }
 
   @override
@@ -54,9 +45,8 @@ class AuthModuleImpl implements AuthModule {
       )).getBoth();
 
       if (success != null) {
-        await tokenStore.saveToken(success.token);
-
-        return Success(success.user);
+        _profileNotifier.value = success;
+        return Success(success);
       }
 
       if (error == ErrorDictionary.incorrectPassword ||
@@ -73,12 +63,8 @@ class AuthModuleImpl implements AuthModule {
   @override
   Future<Result<void, Exception>> logout() async {
     try {
-      final token = tokenStore.token;
-
-      if (token != null) {
-        await apiClient.logout(token);
-        await tokenStore.deleteToken();
-      }
+      await apiClient.logout();
+      _profileNotifier.value = null;
 
       return Success(null);
     } catch (e) {
@@ -100,9 +86,8 @@ class AuthModuleImpl implements AuthModule {
       )).getBoth();
 
       if (success != null) {
-        await tokenStore.saveToken(success.token);
-
-        return Success(success.user);
+        _profileNotifier.value = success;
+        return Success(success);
       }
 
       if (error == ErrorDictionary.emailInUse) {

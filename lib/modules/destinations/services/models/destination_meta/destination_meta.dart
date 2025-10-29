@@ -1,20 +1,20 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'destination_metadata.freezed.dart';
+part 'destination_meta.freezed.dart';
 
 @freezed
-sealed class DestinationMetadata with _$DestinationMetadata {
-  const DestinationMetadata._();
+sealed class DestinationMeta with _$DestinationMeta {
+  const DestinationMeta._();
 
-  const factory DestinationMetadata({
-    required int destinationId,
+  const factory DestinationMeta({
     required int userId,
+    required int destinationId,
     String? observation,
     @Default(false) bool isFavorite,
-  }) = _DestinationMetadata;
+  }) = _DestinationMeta;
 
-  factory DestinationMetadata.fromJson(Map<String, dynamic> map) {
-    return DestinationMetadata(
+  factory DestinationMeta.fromJson(Map<String, dynamic> map) {
+    return DestinationMeta(
       destinationId: map['destination_id'] as int,
       userId: map['user_id'] as int,
       observation: map['observation'] as String?,

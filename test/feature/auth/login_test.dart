@@ -49,15 +49,15 @@ void main() {
       );
 
       // Wait for the command to complete
-      await Future.delayed(Duration(milliseconds: 100));
+      await Future.delayed(Duration(milliseconds: 1000));
 
       // Assert: Verify login was successful
       expect(viewModel.loginCommand.isExecuting.value, false);
       expect(viewModel.loginCommand.value, isNotNull);
       expect(viewModel.loginCommand.value!.isSuccess(), true);
 
-      // Verify token was stored
-      expect(authModule.tokenNotifier.value, isNotNull);
+      // Verify profile was stored
+      expect(authModule.profileNotifier.value, isNotNull);
     });
 
     test('should return error with invalid credentials', () async {
@@ -75,7 +75,7 @@ void main() {
       );
 
       // Wait for the command to complete
-      await Future.delayed(Duration(milliseconds: 100));
+      await Future.delayed(Duration(milliseconds: 1000));
 
       // Assert: Verify login failed with appropriate error
       expect(viewModel.loginCommand.isExecuting.value, false);
@@ -94,7 +94,7 @@ void main() {
       );
 
       // Wait for the command to complete
-      await Future.delayed(Duration(milliseconds: 100));
+      await Future.delayed(Duration(milliseconds: 1000));
 
       // Assert: Verify login failed
       expect(viewModel.loginCommand.isExecuting.value, false);

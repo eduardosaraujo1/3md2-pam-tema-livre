@@ -5,7 +5,6 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import '../../../core/sqlite/sqlite_client.dart';
 import '../dto/profile/profile_dto.dart';
 import 'models/error_dictionary.dart';
-import 'models/login_result.dart';
 
 class LocalAuthClient {
   LocalAuthClient({required this.sqliteClient});
@@ -14,11 +13,11 @@ class LocalAuthClient {
 
   /// Logs in a user with the given [email] and [password].
   ///
-  /// - Returns a [Result] containing the [LoginResult] on success;
+  /// - Returns a [Result] containing the [ProfileDto] on success;
   /// - Returns [ErrorDictionary.userNotFound] if the user does not exist;
   /// - Returns [ErrorDictionary.incorrectPassword] if the password is incorrect.
   /// - Returns general error message on other failures.
-  Future<Result<LoginResult, String>> login(
+  Future<Result<ProfileDto, String>> login(
     String email,
     String password,
   ) async {
@@ -42,19 +41,14 @@ class LocalAuthClient {
         return Error(ErrorDictionary.incorrectPassword);
       }
 
-      return Success(
-        LoginResult(
-          user: ProfileDto.fromJson(user),
-          token: await _generateToken(user['id'] as int),
-        ),
-      );
+      return Success(ProfileDto.fromJson(user));
     } catch (e) {
       return Error('Failed to login: $e');
     }
   }
 
   /// Registers a user with the given [name], [email] and [password].
-  Future<Result<LoginResult, String>> register(
+  Future<Result<ProfileDto, String>> register(
     String name,
     String email,
     String password,
@@ -80,67 +74,17 @@ class LocalAuthClient {
 
       final user = results.first;
 
-      return Success(
-        LoginResult(
-          user: ProfileDto.fromJson(user),
-          token: await _generateToken(userId),
-        ),
-      );
+      return Success(ProfileDto.fromJson(user));
     } catch (e) {
       return Error('Failed to register user: $e');
     }
   }
 
-  /// Logs out the user associated with the given [token].
+  /// Logs out the user.
   ///
   /// Does not handle errors.
-  Future<void> logout(String token) async {
+  Future<void> logout() async {
     await Future.delayed(Duration(milliseconds: 500)); // Simulate network delay
-    await sqliteClient.database.delete(
-      'tokens',
-      where: 'token = ?',
-      whereArgs: [token],
-    );
-  }
-
-  Future<String> _generateToken(int userId) async {
-    final token = BCrypt.gensalt();
-
-    await sqliteClient.database.insert('tokens', {
-      'user_id': userId,
-      'token': token,
-    });
-
-    return token;
-  }
-
-  Future<Result<ProfileDto, String>> getProfile(String token) async {
-    try {
-      await Future.delayed(
-        Duration(milliseconds: 500),
-      ); // Simulate network delay
-      final List<Map<String, dynamic>> tokenResults = await sqliteClient
-          .database
-          .query('tokens', where: 'token = ?', whereArgs: [token]);
-
-      if (tokenResults.isEmpty) {
-        return Error(ErrorDictionary.unauthenticated);
-      }
-
-      final userId = tokenResults.first['user_id'] as int;
-
-      final List<Map<String, dynamic>> userResults = await sqliteClient.database
-          .query('users', where: 'id = ?', whereArgs: [userId]);
-
-      if (userResults.isEmpty) {
-        return Error(ErrorDictionary.userNotFound);
-      }
-
-      final user = userResults.first;
-
-      return Success(ProfileDto.fromJson(user));
-    } catch (e) {
-      return Error('Failed to get profile: $e');
-    }
+    // No-op: No tokens to delete anymore
   }
 }
